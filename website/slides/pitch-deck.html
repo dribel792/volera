@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volera - Sales Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #0ea5e9;
+            --accent: #22c55e;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #6366f1, #0ea5e9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow: hidden;
+        }
+        
+        .deck {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slides {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 80px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .slide h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 32px;
+            line-height: 1.1;
+        }
+        
+        .slide h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        
+        .slide h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .slide p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+        }
+        
+        /* Title Slide */
+        .slide.title {
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.2), transparent 60%);
+        }
+        
+        .slide.title h1 {
+            font-size: 5rem;
+        }
+        
+        .tagline {
+            font-size: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+        }
+        
+        /* Grid layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: var(--dark-light);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 40px;
+        }
+        
+        .card.highlight {
+            border-color: var(--primary);
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.1), transparent);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+        
+        .card h3 {
+            margin-bottom: 16px;
+        }
+        
+        .card p {
+            font-size: 1.1rem;
+        }
+        
+        /* Stats */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+        
+        /* Flow diagram */
+        .flow-horizontal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 60px;
+        }
+        
+        .flow-node {
+            padding: 24px 48px;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .flow-node.broker {
+            background: var(--dark-light);
+            border: 1px solid #334155;
+        }
+        
+        .flow-node.volera {
+            background: var(--gradient);
+        }
+        
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        /* List */
+        .check-list {
+            list-style: none;
+            font-size: 1.5rem;
+        }
+        
+        .check-list li {
+            padding: 16px 0;
+            padding-left: 48px;
+            position: relative;
+        }
+        
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        /* Problem list */
+        .problem-list {
+            list-style: none;
+            font-size: 1.5rem;
+        }
+        
+        .problem-list li {
+            padding: 16px 0;
+            padding-left: 48px;
+            position: relative;
+            color: var(--text-muted);
+        }
+        
+        .problem-list li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-size: 1.5rem;
+        }
+        
+        /* DVP */
+        .dvp-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .dvp-party {
+            text-align: center;
+            padding: 40px 60px;
+            background: var(--dark-light);
+            border-radius: 16px;
+        }
+        
+        .dvp-party h4 {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+        
+        .dvp-center {
+            background: var(--gradient);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .dvp-arrows {
+            margin-top: 16px;
+        }
+        
+        .dvp-arrow {
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        
+        /* Pricing */
+        .pricing-model {
+            background: var(--dark-light);
+            border-radius: 16px;
+            padding: 60px;
+            margin-top: 40px;
+        }
+        
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #334155;
+            font-size: 1.25rem;
+        }
+        
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        /* CTA slide */
+        .slide.cta {
+            text-align: center;
+            background: var(--gradient);
+        }
+        
+        .slide.cta h1 {
+            color: white;
+        }
+        
+        .slide.cta p {
+            color: rgba(255,255,255,0.9);
+            margin: 0 auto 40px;
+        }
+        
+        .contact-info {
+            font-size: 1.5rem;
+            margin-top: 40px;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Navigation */
+        .nav {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid #334155;
+        }
+        
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .nav-controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background: var(--dark-light);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn:hover {
+            border-color: var(--primary);
+        }
+        
+        .slide-counter {
+            color: var(--text-muted);
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        /* Slide specific */
+        .comparison {
+            margin-top: 40px;
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr;
+            gap: 24px;
+            padding: 16px 0;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .comparison-row.header {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        
+        .comparison-row .old {
+            color: #ef4444;
+        }
+        
+        .comparison-row .new {
+            color: var(--accent);
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+                display: flex !important;
+                opacity: 1 !important;
+                position: relative;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="deck">
+        <div class="slides">
+            <!-- Slide 1: Title -->
+            <div class="slide title active" data-slide="1">
+                <div class="logo"><span class="logo-icon">◆</span> Volera</div>
+                <h1>Extend Your Product Suite.<br><span class="gradient-text">Access New Users.</span></h1>
+                <p class="tagline">Lending • Issuance • Settlement — for brokers and exchanges</p>
+            </div>
+
+            <!-- Slide 2: The Problem -->
+            <div class="slide" data-slide="2">
+                <h2>The Problem</h2>
+                <p>Traditional securities settlement is broken</p>
+                <ul class="problem-list">
+                    <li>T+2 settlement locks capital for days</li>
+                    <li>Margin trapped on each platform separately</li>
+                    <li>Counterparty risk between trade and settlement</li>
+                    <li>Markets close — but risk doesn't</li>
+                    <li>Opaque processes, manual reconciliation</li>
+                </ul>
+            </div>
+
+            <!-- Slide 3: The Cost -->
+            <div class="slide" data-slide="3">
+                <h2>The Hidden Cost of T+2</h2>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Days of locked capital</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">5x</div>
+                        <div class="stat-label">Margin duplication</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">$B</div>
+                        <div class="stat-label">Counterparty exposure</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Missed opportunities</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: The Solution -->
+            <div class="slide" data-slide="4">
+                <h2>Three Products, One Platform</h2>
+                <p>Enabling brokers and exchanges to access new users</p>
+                <div class="grid-3">
+                    <div class="card highlight">
+                        <div class="card-icon">💰</div>
+                        <h3>Volera Lending</h3>
+                        <p>10x margin on spot without MIFID. In-app loans for retail leverage. Externalizes balance sheet risk.</p>
+                        <p style="color: var(--accent); margin-top: 12px;">✓ Live with top-10 fintech</p>
+                    </div>
+                    <div class="card highlight">
+                        <div class="card-icon">📊</div>
+                        <h3>Volera Issuance</h3>
+                        <p>Equities, commodities, perps as structured products. Delta-one trackers, yield notes. On-demand tokenization.</p>
+                        <p style="color: var(--accent); margin-top: 12px;">✓ Live with 3 major exchanges</p>
+                    </div>
+                    <div class="card highlight">
+                        <div class="card-icon">⚡</div>
+                        <h3>Volera Settlement</h3>
+                        <p>Self-custody trading via single API. Instant DVP. T+0 settlement. No counterparty risk.</p>
+                        <p style="color: var(--text-muted); margin-top: 12px;">Now onboarding</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: How DVP Works -->
+            <div class="slide" data-slide="5">
+                <h2>Delivery vs Payment (DVP)</h2>
+                <p>Atomic swap: both legs settle or neither does</p>
+                <div class="dvp-flow">
+                    <div class="dvp-party">
+                        <h4>Seller</h4>
+                        <div>Security Token</div>
+                    </div>
+                    <div class="dvp-center">
+                        <div>Volera Smart Contract</div>
+                        <div class="dvp-arrows">
+                            <div class="dvp-arrow">Token →</div>
+                            <div class="dvp-arrow">← USDC</div>
+                        </div>
+                    </div>
+                    <div class="dvp-party">
+                        <h4>Buyer</h4>
+                        <div>USDC</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Settlement Flow -->
+            <div class="slide" data-slide="6">
+                <h2>The Settlement Flow</h2>
+                <div class="flow-horizontal">
+                    <div class="flow-node broker">Broker A</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-node volera">Volera</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-node broker">Broker B</div>
+                </div>
+                <div class="grid-2" style="margin-top: 60px;">
+                    <div>
+                        <h3>What happens:</h3>
+                        <ul class="check-list">
+                            <li>Trade executes on any venue</li>
+                            <li>Volera receives trade data</li>
+                            <li>Net positions calculated</li>
+                            <li>Atomic settlement on-chain</li>
+                            <li>Finality in seconds</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Benefits:</h3>
+                        <ul class="check-list">
+                            <li>T+0 instead of T+2</li>
+                            <li>Zero settlement risk</li>
+                            <li>24/7 operation</li>
+                            <li>Immutable audit trail</li>
+                            <li>Capital efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Cross-Platform Netting -->
+            <div class="slide" data-slide="7">
+                <h2>Cross-Platform Margin</h2>
+                <p>Net positions across all connected platforms</p>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Before Volera</h3>
+                        <div class="pricing-model" style="padding: 30px;">
+                            <div class="pricing-row">
+                                <span>Broker A margin</span>
+                                <span class="old">$10M</span>
+                            </div>
+                            <div class="pricing-row">
+                                <span>Broker B margin</span>
+                                <span class="old">$10M</span>
+                            </div>
+                            <div class="pricing-row">
+                                <span>Broker C margin</span>
+                                <span class="old">$10M</span>
+                            </div>
+                            <div class="pricing-row" style="font-weight: 700;">
+                                <span>Total locked</span>
+                                <span class="old">$30M</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card highlight">
+                        <h3>With Volera</h3>
+                        <div class="pricing-model" style="padding: 30px;">
+                            <div class="pricing-row">
+                                <span>Unified margin</span>
+                                <span class="new">$10M</span>
+                            </div>
+                            <div class="pricing-row">
+                                <span>Netting benefit</span>
+                                <span class="new">+$5M freed</span>
+                            </div>
+                            <div class="pricing-row">
+                                <span>Capital efficiency</span>
+                                <span class="new">5x better</span>
+                            </div>
+                            <div class="pricing-row" style="font-weight: 700;">
+                                <span>Total needed</span>
+                                <span class="new">$5M</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Technology -->
+            <div class="slide" data-slide="8">
+                <h2>Built on Proven Infrastructure</h2>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-value" style="font-size: 2.5rem;">Base L2</div>
+                        <div class="stat-label">Ethereum security, low fees</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" style="font-size: 2.5rem;">USDC</div>
+                        <div class="stat-label">Circle-backed stablecoin</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" style="font-size: 2.5rem;">ERC-3643</div>
+                        <div class="stat-label">Compliant security tokens</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" style="font-size: 2.5rem;">Chainlink</div>
+                        <div class="stat-label">Oracle price feeds</div>
+                    </div>
+                </div>
+                <div style="margin-top: 60px;">
+                    <ul class="check-list">
+                        <li>Audited smart contracts</li>
+                        <li>Regulatory-compliant token standards</li>
+                        <li>Enterprise-grade security</li>
+                        <li>Fully on-chain, transparent</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 9: Comparison -->
+            <div class="slide" data-slide="9">
+                <h2>Traditional vs Volera</h2>
+                <div class="comparison">
+                    <div class="comparison-row header">
+                        <span></span>
+                        <span>Traditional</span>
+                        <span>Volera</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Settlement</span>
+                        <span class="old">T+2 days</span>
+                        <span class="new">T+0 (seconds)</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Counterparty risk</span>
+                        <span class="old">48+ hours exposure</span>
+                        <span class="new">Zero (atomic)</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Operating hours</span>
+                        <span class="old">Market hours only</span>
+                        <span class="new">24/7/365</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Margin efficiency</span>
+                        <span class="old">Per-platform silos</span>
+                        <span class="new">Cross-platform netting</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Audit trail</span>
+                        <span class="old">Fragmented, delayed</span>
+                        <span class="new">Immutable, real-time</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Use Cases -->
+            <div class="slide" data-slide="10">
+                <h2>Use Cases</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-icon">🏦</div>
+                        <h3>Broker-Dealers</h3>
+                        <p>Instant settlement with counterparties. Free trapped margin. Offer 24/7 trading.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>Asset Managers</h3>
+                        <p>Deploy capital faster. Reduce counterparty exposure. Transparent custody.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🏛️</div>
+                        <h3>Issuers</h3>
+                        <p>Tokenize securities. Automate corporate actions. Global distribution.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🌐</div>
+                        <h3>Exchanges</h3>
+                        <p>Add instant settlement. Connect to cross-platform netting. Modern infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Business Model -->
+            <div class="slide" data-slide="11">
+                <h2>Business Model</h2>
+                <div class="pricing-model">
+                    <div class="pricing-row">
+                        <span>Settlement fee</span>
+                        <span class="pricing-value">1-5 bps per settlement</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span>Netting savings share</span>
+                        <span class="pricing-value">10% of capital freed</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span>Token issuance</span>
+                        <span class="pricing-value">Setup + ongoing fee</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span>Platform integration</span>
+                        <span class="pricing-value">API access included</span>
+                    </div>
+                </div>
+                <p style="margin-top: 40px; font-size: 1.25rem;">ROI: Savings from capital efficiency typically exceed fees by 10x+</p>
+            </div>
+
+            <!-- Slide 12: CTA -->
+            <div class="slide cta" data-slide="12">
+                <h1>Ready to Modernize Settlement?</h1>
+                <p>Join the institutions already settling instantly with Volera.</p>
+                <div class="contact-info">
+                    <p><strong>Schedule a demo:</strong></p>
+                    <p><a href="mailto:hello@volera.io">hello@volera.io</a></p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <div class="nav-logo"><span class="logo-icon">◆</span> Volera</div>
+            <div class="nav-controls">
+                <button class="nav-btn" onclick="prevSlide()">← Previous</button>
+                <span class="slide-counter">1 / 12</span>
+                <button class="nav-btn" onclick="nextSlide()">Next →</button>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+
+        function showSlide(n) {
+            if (n < 1) n = 1;
+            if (n > totalSlides) n = totalSlides;
+            
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-slide="${n}"]`).classList.add('active');
+            document.querySelector('.slide-counter').textContent = `${n} / ${totalSlides}`;
+            currentSlide = n;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Touch navigation
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>

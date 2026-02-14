@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volera - Partner Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #0ea5e9;
+            --accent: #22c55e;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #6366f1, #0ea5e9);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); overflow: hidden; }
+        .deck { width: 100vw; height: 100vh; display: flex; flex-direction: column; }
+        .slides { flex: 1; position: relative; overflow: hidden; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 80px; display: none; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 0.5s ease; }
+        .slide.active { display: flex; opacity: 1; }
+        .slide h1 { font-size: 4rem; font-weight: 800; margin-bottom: 32px; line-height: 1.1; }
+        .slide h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; }
+        .slide h3 { font-size: 1.75rem; font-weight: 600; margin-bottom: 24px; }
+        .slide p { font-size: 1.5rem; color: var(--text-muted); max-width: 900px; line-height: 1.6; }
+        .gradient-text { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo { font-size: 2rem; font-weight: 700; margin-bottom: 48px; }
+        .logo-icon { color: var(--primary); }
+        .slide.title { text-align: center; background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.2), transparent 60%); }
+        .slide.title h1 { font-size: 5rem; }
+        .tagline { font-size: 2rem; color: var(--text-muted); margin-bottom: 60px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 40px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; margin-top: 40px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+        .card { background: var(--dark-light); border: 1px solid #334155; border-radius: 16px; padding: 40px; }
+        .card.highlight { border-color: var(--primary); background: linear-gradient(180deg, rgba(99, 102, 241, 0.1), transparent); }
+        .card-icon { font-size: 3rem; margin-bottom: 24px; }
+        .card h3 { margin-bottom: 16px; }
+        .card p { font-size: 1.1rem; }
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 5rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { font-size: 1.25rem; color: var(--text-muted); margin-top: 8px; }
+        .check-list { list-style: none; font-size: 1.5rem; }
+        .check-list li { padding: 16px 0; padding-left: 48px; position: relative; }
+        .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-size: 1.5rem; }
+        .problem-list { list-style: none; font-size: 1.5rem; }
+        .problem-list li { padding: 16px 0; padding-left: 48px; position: relative; color: var(--text-muted); }
+        .problem-list li::before { content: "✗"; position: absolute; left: 0; color: #ef4444; font-size: 1.5rem; }
+        .roi-box { background: var(--dark-light); border-radius: 16px; padding: 40px; margin-top: 40px; }
+        .roi-row { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #334155; font-size: 1.25rem; }
+        .roi-row:last-child { border-bottom: none; }
+        .roi-value { color: var(--accent); font-weight: 600; }
+        .roi-result { font-size: 3rem; font-weight: 700; color: var(--accent); }
+        .slide.cta { text-align: center; background: var(--gradient); }
+        .slide.cta h1 { color: white; }
+        .slide.cta p { color: rgba(255,255,255,0.9); margin: 0 auto 40px; }
+        .contact-info { font-size: 1.5rem; margin-top: 40px; }
+        .contact-info a { color: white; text-decoration: underline; }
+        .nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.9); border-top: 1px solid #334155; }
+        .nav-logo { font-size: 1.25rem; font-weight: 700; }
+        .nav-controls { display: flex; gap: 16px; align-items: center; }
+        .nav-btn { padding: 10px 20px; background: var(--dark-light); border: 1px solid #334155; border-radius: 8px; color: var(--text); cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+        .nav-btn:hover { border-color: var(--primary); }
+        .slide-counter { color: var(--text-muted); min-width: 60px; text-align: center; }
+        .client-logos { display: flex; justify-content: center; gap: 60px; margin-top: 60px; opacity: 0.6; }
+        .client-logo { font-size: 1.5rem; font-weight: 600; }
+        .timeline { display: flex; justify-content: space-between; margin-top: 60px; }
+        .timeline-item { text-align: center; flex: 1; }
+        .timeline-week { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .timeline-label { margin-top: 8px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="deck">
+        <div class="slides">
+            <!-- Slide 1: Title -->
+            <div class="slide title active" data-slide="1">
+                <div class="logo"><span class="logo-icon">◆</span> Volera</div>
+                <h1>Unlock <span class="gradient-text">$40B Daily Volume</span><br>For Your Exchange</h1>
+                <p class="tagline">Connect to on-chain liquidity. Acquire crypto-native customers. Increase trading volume.</p>
+            </div>
+
+            <!-- Slide 2: The Opportunity -->
+            <div class="slide" data-slide="2">
+                <h2>The Opportunity You're Missing</h2>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-value">60M</div>
+                        <div class="stat-label">Monthly on-chain traders</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">$40B</div>
+                        <div class="stat-label">Daily trading volume</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">$0</div>
+                        <div class="stat-label">Your current share</div>
+                    </div>
+                </div>
+                <p style="margin-top: 60px; text-align: center;">These users trade on-chain. They won't move to your CEX. But they will trade your products — if you meet them where they are.</p>
+            </div>
+
+            <!-- Slide 3: Why They Don't Come To You -->
+            <div class="slide" data-slide="3">
+                <h2>Why On-Chain Users Don't Use Your Exchange</h2>
+                <ul class="problem-list">
+                    <li>Self-custody is non-negotiable — they won't deposit to CEX</li>
+                    <li>Your KYC funnel is friction they'll abandon</li>
+                    <li>They trade 24/7 — your settlement doesn't</li>
+                    <li>DeFi gives them instant, atomic trades</li>
+                    <li>They've never traded securities — it's not available on-chain</li>
+                </ul>
+            </div>
+
+            <!-- Slide 4: What Volera Does -->
+            <div class="slide" data-slide="4">
+                <h2>Volera Bridges The Gap</h2>
+                <p>We connect your exchange to DeFi rails so you can:</p>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="card-icon">🌊</div>
+                        <h3>Access On-Chain Users</h3>
+                        <p>Reach 60M traders without building DeFi infrastructure</p>
+                    </div>
+                    <div class="card highlight">
+                        <div class="card-icon">📈</div>
+                        <h3>Increase Volume</h3>
+                        <p>Capital efficiency means more trading, more fees</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🏆</div>
+                        <h3>Offer Securities</h3>
+                        <p>First-mover advantage in on-chain securities trading</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Who We Partner With -->
+            <div class="slide" data-slide="5">
+                <h2>Who We Partner With</h2>
+                <div class="grid-4">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">📈</div>
+                        <h3>CFD Brokers</h3>
+                        <p style="font-size: 1rem;">On-chain CFDs for crypto-native traders</p>
+                    </div>
+                    <div class="card highlight" style="text-align: center;">
+                        <div class="card-icon">🔄</div>
+                        <h3>Crypto Exchanges</h3>
+                        <p style="font-size: 1rem;">Add tokenized securities</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🏦</div>
+                        <h3>Prime Brokers</h3>
+                        <p style="font-size: 1rem;">Cross-platform netting</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🌐</div>
+                        <h3>Neo-Brokers</h3>
+                        <p style="font-size: 1rem;">Instant settlement</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Value Proposition -->
+            <div class="slide" data-slide="6">
+                <h2>Why Partners Choose Volera</h2>
+                <div class="grid-2">
+                    <div>
+                        <h3>New Revenue Streams</h3>
+                        <ul class="check-list">
+                            <li>Access 60M on-chain customers</li>
+                            <li>First to offer securities on DeFi</li>
+                            <li>Higher volume from capital efficiency</li>
+                            <li>24/7 trading = more fees</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Lower Costs</h3>
+                        <ul class="check-list">
+                            <li>Instant settlement (T+0)</li>
+                            <li>5-10x capital efficiency</li>
+                            <li>Zero counterparty risk</li>
+                            <li>Automated reconciliation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: ROI -->
+            <div class="slide" data-slide="7">
+                <h2>The Business Case</h2>
+                <p>Conservative Year 1 estimates for a mid-size broker:</p>
+                <div class="grid-2">
+                    <div class="roi-box">
+                        <h3 style="margin-bottom: 24px;">Your Investment</h3>
+                        <div class="roi-row"><span>Integration</span><span>$50,000</span></div>
+                        <div class="roi-row"><span>Monthly fee</span><span>$5,000/mo</span></div>
+                        <div class="roi-row"><span>Settlement fees</span><span>1-5 bps</span></div>
+                        <div class="roi-row" style="font-weight: 600;"><span>Year 1 total</span><span>~$120,000</span></div>
+                    </div>
+                    <div class="roi-box">
+                        <h3 style="margin-bottom: 24px;">Your Return</h3>
+                        <div class="roi-row"><span>New customers</span><span class="roi-value">+5,000</span></div>
+                        <div class="roi-row"><span>New volume</span><span class="roi-value">+$500M</span></div>
+                        <div class="roi-row"><span>Capital freed</span><span class="roi-value">$10M</span></div>
+                        <div class="roi-row"><span>New revenue</span><span class="roi-result">$2-5M</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: How It Works -->
+            <div class="slide" data-slide="8">
+                <h2>How It Works</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="card-icon">🔌</div>
+                        <h3>1. Integration</h3>
+                        <p>Connect via API to your existing systems. No major infrastructure changes needed.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🚀</div>
+                        <h3>2. Launch</h3>
+                        <p>Go live with on-chain settlement. We handle the blockchain complexity.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h3>3. Grow</h3>
+                        <p>Access DeFi users. Increase volume. We support your success.</p>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-week">Week 1-2</div>
+                        <div class="timeline-label">Technical scoping</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-week">Week 3-6</div>
+                        <div class="timeline-label">Integration</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-week">Week 7-8</div>
+                        <div class="timeline-label">Testing</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-week">Week 9+</div>
+                        <div class="timeline-label">Live 🚀</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Technology -->
+            <div class="slide" data-slide="9">
+                <h2>Enterprise-Grade Infrastructure</h2>
+                <div class="grid-4">
+                    <div class="card" style="text-align: center;">
+                        <h3>Base L2</h3>
+                        <p style="font-size: 1rem;">Coinbase's Layer 2</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h3>USDC</h3>
+                        <p style="font-size: 1rem;">Circle stablecoin</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h3>ERC-3643</h3>
+                        <p style="font-size: 1rem;">Compliant tokens</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h3>Chainlink</h3>
+                        <p style="font-size: 1rem;">Oracle feeds</p>
+                    </div>
+                </div>
+                <ul class="check-list" style="margin-top: 40px;">
+                    <li>Audited smart contracts</li>
+                    <li>SOC 2 compliant operations</li>
+                    <li>Regulatory-ready from day one</li>
+                </ul>
+            </div>
+
+            <!-- Slide 10: Competition -->
+            <div class="slide" data-slide="10">
+                <h2>First-Mover Advantage</h2>
+                <p>Your competitors are exploring blockchain:</p>
+                <div class="client-logos">
+                    <div class="client-logo">Robinhood</div>
+                    <div class="client-logo">eToro</div>
+                    <div class="client-logo">Interactive Brokers</div>
+                    <div class="client-logo">Revolut</div>
+                </div>
+                <div class="stat-grid" style="margin-top: 80px;">
+                    <div class="stat">
+                        <div class="stat-value" style="font-size: 3rem;">18+</div>
+                        <div class="stat-label">Months to build in-house</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" style="font-size: 3rem;">$5M+</div>
+                        <div class="stat-label">Development cost</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" style="font-size: 3rem; color: var(--accent);">8 weeks</div>
+                        <div class="stat-label">With Volera</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: CTA -->
+            <div class="slide cta" data-slide="11">
+                <h1>Let's Unlock On-Chain Volume Together</h1>
+                <p>Schedule a partnership call to discuss how Volera can drive new revenue for your exchange.</p>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:partners@volera.io">partners@volera.io</a></p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <div class="nav-logo"><span class="logo-icon">◆</span> Volera</div>
+            <div class="nav-controls">
+                <button class="nav-btn" onclick="prevSlide()">← Previous</button>
+                <span class="slide-counter">1 / 11</span>
+                <button class="nav-btn" onclick="nextSlide()">Next →</button>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 11;
+        function showSlide(n) {
+            if (n < 1) n = 1;
+            if (n > totalSlides) n = totalSlides;
+            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+            document.querySelector(`[data-slide="${n}"]`).classList.add('active');
+            document.querySelector('.slide-counter').textContent = `${n} / ${totalSlides}`;
+            currentSlide = n;
+        }
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            else if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>

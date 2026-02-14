@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volera | Unlock On-Chain Volume for Your Exchange</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .stat-huge { font-size: 4rem; font-weight: 800; }
+        .highlight-box { 
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(14, 165, 233, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .value-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+        .value-card h3 { margin-bottom: 16px; }
+        .roi-section {
+            background: var(--dark-light);
+            padding: 80px 0;
+        }
+        .roi-calc {
+            background: var(--dark);
+            border-radius: 16px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .roi-input, .roi-output {
+            padding: 24px;
+        }
+        .roi-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .roi-result {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .client-types {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .client-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+        .client-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        .client-icon { font-size: 3rem; margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="logo-icon">◆</span> Volera
+            </a>
+            <div class="nav-links">
+                <a href="#opportunity">Opportunity</a>
+                <a href="#solution">Solution</a>
+                <a href="#roi">ROI</a>
+                <a href="#contact" class="btn btn-primary">Partner With Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - B2B Focus -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">For Brokers & Exchanges</div>
+                <h1>Settlement Rails for <span class="gradient-text">Digital Securities</span></h1>
+                <p class="hero-subtitle">
+                    Instant DVP. Any token. Any counterparty. 
+                    We're the plumbing that makes tokenized securities actually settle — whether you're issuing your own or connecting to Ondo, Securitize, or anyone else.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary btn-large">Schedule Partnership Call</a>
+                    <a href="#opportunity" class="btn btn-secondary btn-large">See The Opportunity</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">T+0</span>
+                        <span class="stat-label">Settlement, not T+2</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Always-on markets</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">5x</span>
+                        <span class="stat-label">Capital efficiency</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Opportunity Section -->
+    <section class="problem-section" id="opportunity">
+        <div class="container">
+            <h2 class="section-title">Why Settlement Infrastructure Matters</h2>
+            
+            <div class="highlight-box">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: center;">
+                    <div>
+                        <div class="stat-huge gradient-text">60M</div>
+                        <p style="font-size: 1.25rem;">Monthly active on-chain traders</p>
+                    </div>
+                    <div>
+                        <div class="stat-huge gradient-text">$40B</div>
+                        <p style="font-size: 1.25rem;">Daily spot + perps volume</p>
+                    </div>
+                    <div>
+                        <div class="stat-huge gradient-text">24/7</div>
+                        <p style="font-size: 1.25rem;">Trading never stops</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🔒</div>
+                    <h3>They're Locked In DeFi</h3>
+                    <p>On-chain users won't move funds to CEX. Self-custody is non-negotiable. Your KYC funnel doesn't work for them.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📊</div>
+                    <h3>Securities Are Untapped</h3>
+                    <p>DeFi is 99% crypto. These users have never traded securities on-chain. Be the first to offer it.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3>Your Competitors Are Coming</h3>
+                    <p>Robinhood, eToro, Interactive Brokers — all exploring blockchain. Move first or play catch-up.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚙️</div>
+                    <h3>Building Is Expensive</h3>
+                    <p>Blockchain infra, custody, compliance, smart contracts — 18+ months and $5M+ to build in-house.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Is This For -->
+    <section class="solutions-section">
+        <div class="container">
+            <h2 class="section-title">Who We Partner With</h2>
+            <div class="client-types">
+                <div class="client-card featured">
+                    <div class="client-icon">🔄</div>
+                    <h3>Crypto Exchanges</h3>
+                    <p><strong>Add equities and commodities.</strong> Give users yield exposure without building an issuer or risk desk. We handle the complexity.</p>
+                </div>
+                <div class="client-card featured">
+                    <div class="client-icon">📈</div>
+                    <h3>CFD Brokers</h3>
+                    <p><strong>Offer 10x margin on spot.</strong> In-app lending lets your users trade leverage without touching MIFID products.</p>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🏦</div>
+                    <h3>Fintechs & Neo-Banks</h3>
+                    <p><strong>Launch trading products fast.</strong> No balance sheet risk, no regulatory complexity. White-label and go.</p>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🌐</div>
+                    <h3>DeFi-Native Platforms</h3>
+                    <p><strong>Securities for self-custody users.</strong> Single API to let wallet users trade equities and commodities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Volera Does -->
+    <section class="how-it-works" id="solution">
+        <div class="container">
+            <h2 class="section-title">Three Products — One Platform</h2>
+            <p class="section-subtitle">Trusted by leading crypto exchanges and brokers</p>
+            <div class="value-grid">
+                <div class="value-card" style="border: 2px solid var(--primary);">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">💰</div>
+                    <h3>Volera Lending</h3>
+                    <p><strong>10x margin without MIFID.</strong> In-app loans let your users trade leverage on spot. Fully controlled margin maintenance. Externalizes balance sheet risk.</p>
+                    <p style="color: var(--accent); margin-top: 12px; font-size: 0.9rem;">✓ Live with top-10 fintech</p>
+                </div>
+                <div class="value-card" style="border: 2px solid var(--primary);">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📊</div>
+                    <h3>Volera Issuance</h3>
+                    <p><strong>Equities, commodities, perps — as structured products.</strong> Delta-one trackers, yield notes, securitized perpetuals. On-demand tokenization when users withdraw to wallet.</p>
+                    <p style="color: var(--accent); margin-top: 12px; font-size: 0.9rem;">✓ Live with 3 major exchanges</p>
+                </div>
+                <div class="value-card" style="border: 2px solid var(--primary);">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">⚡</div>
+                    <h3>Volera Settlement</h3>
+                    <p><strong>Self-custody trading via single API.</strong> Your users trade securities from their own wallets. Instant DVP settlement. T+0, atomic, no counterparty risk.</p>
+                    <p style="color: var(--text-muted); margin-top: 12px; font-size: 0.9rem;">Now onboarding partners</p>
+                </div>
+                <div class="value-card">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🔗</div>
+                    <h3>Cross-Platform Netting</h3>
+                    <p>Net positions across all connected brokers. 5x capital efficiency. The more brokers join, the more valuable the network.</p>
+                </div>
+                <div class="value-card">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🛡️</div>
+                    <h3>No Balance Sheet Risk</h3>
+                    <p>We take the risk off your books. Lending collateral, issuance liability, settlement counterparty — all externalized to Volera.</p>
+                </div>
+                <div class="value-card">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🏗️</div>
+                    <h3>White-Label Ready</h3>
+                    <p>Your brand, our rails. Single API integration. Live in weeks, not months.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Section -->
+    <section class="roi-section" id="roi">
+        <div class="container">
+            <h2 class="section-title">The Business Case</h2>
+            <p class="section-subtitle">Conservative estimates for a mid-size broker</p>
+            
+            <div class="roi-calc">
+                <div class="roi-input">
+                    <h3 style="margin-bottom: 24px;">Your Investment</h3>
+                    <div class="roi-line">
+                        <span>Integration cost</span>
+                        <span>$50,000</span>
+                    </div>
+                    <div class="roi-line">
+                        <span>Monthly platform fee</span>
+                        <span>$5,000</span>
+                    </div>
+                    <div class="roi-line">
+                        <span>Settlement fees</span>
+                        <span>1-5 bps per trade</span>
+                    </div>
+                    <div class="roi-line" style="border-bottom: none; font-weight: 600;">
+                        <span>Year 1 total cost</span>
+                        <span>~$120,000</span>
+                    </div>
+                </div>
+                <div class="roi-output">
+                    <h3 style="margin-bottom: 24px;">Your Return</h3>
+                    <div class="roi-line">
+                        <span>New on-chain customers</span>
+                        <span style="color: var(--accent);">+5,000</span>
+                    </div>
+                    <div class="roi-line">
+                        <span>Additional trading volume</span>
+                        <span style="color: var(--accent);">+$500M/year</span>
+                    </div>
+                    <div class="roi-line">
+                        <span>Capital freed (netting)</span>
+                        <span style="color: var(--accent);">$10M</span>
+                    </div>
+                    <div class="roi-line">
+                        <span>New revenue</span>
+                        <span class="roi-result">+$2-5M</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 40px; color: var(--text-muted);">
+                ROI typically exceeds 10x in the first year. We only win when you win.
+            </p>
+        </div>
+    </section>
+
+    <!-- How We Work Together -->
+    <section class="solutions-section">
+        <div class="container">
+            <h2 class="section-title">How We Work Together</h2>
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-number">01</div>
+                    <h3>Integration</h3>
+                    <p>We connect to your existing systems via API. No major infrastructure changes. Live in 4-8 weeks.</p>
+                    <ul class="pillar-features">
+                        <li>REST API integration</li>
+                        <li>Your existing order flow</li>
+                        <li>White-label settlement</li>
+                        <li>Technical support included</li>
+                    </ul>
+                </div>
+                <div class="pillar featured">
+                    <div class="pillar-badge">Core Value</div>
+                    <div class="pillar-number">02</div>
+                    <h3>Go-To-Market</h3>
+                    <p>We help you reach on-chain users. Co-marketing, DeFi community access, launch support.</p>
+                    <ul class="pillar-features">
+                        <li>DeFi community intros</li>
+                        <li>On-chain distribution</li>
+                        <li>Co-branded campaigns</li>
+                        <li>Product positioning</li>
+                    </ul>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-number">03</div>
+                    <h3>Ongoing Support</h3>
+                    <p>Dedicated partner success team. Quarterly reviews. Continuous optimization.</p>
+                    <ul class="pillar-features">
+                        <li>Dedicated account manager</li>
+                        <li>Performance dashboards</li>
+                        <li>Regulatory updates</li>
+                        <li>New feature access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="tech-section" style="background: linear-gradient(180deg, var(--dark-light) 0%, var(--dark) 100%);">
+        <div class="container">
+            <h2 class="section-title">Already Powering Leading Platforms</h2>
+            <p class="section-subtitle" style="margin-bottom: 40px;">From top-10 fintechs to global crypto exchanges</p>
+            <div class="stat-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 60px;">
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">4+</div>
+                    <div class="stat-label">Live Integrations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">$B+</div>
+                    <div class="stat-label">Trading Volume Enabled</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">10+</div>
+                    <div class="stat-label">Pipeline Partners</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">EU</div>
+                    <div class="stat-label">Regulatory Framework</div>
+                </div>
+            </div>
+            <h3 style="text-align: center; margin-bottom: 32px; color: var(--text-muted);">Built on Proven Infrastructure</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-logo">Base L2</div>
+                    <p>Coinbase's L2 chain</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">USDC</div>
+                    <p>Circle-backed stablecoin</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">ERC-3643</div>
+                    <p>Compliant security tokens</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">Chainlink</div>
+                    <p>Enterprise-grade oracles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Capture On-Chain Volume?</h2>
+                <p>Let's discuss how Volera can unlock new revenue for your exchange.</p>
+                <div class="cta-form">
+                    <input type="email" placeholder="your@email.com" class="cta-input">
+                    <button class="btn btn-primary btn-large">Schedule Call</button>
+                </div>
+                <p class="cta-note">Or email partnerships directly: <a href="mailto:partners@volera.io">partners@volera.io</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">◆</span> Volera
+                    <p>Connecting traditional finance to on-chain liquidity.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Solutions</h4>
+                        <a href="#">For CFD Brokers</a>
+                        <a href="#">For Exchanges</a>
+                        <a href="#">For Prime Brokers</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Compliance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Volera. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
