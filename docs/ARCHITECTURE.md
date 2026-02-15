@@ -1,4 +1,4 @@
-# Volera Settlement - Architecture
+# Anduin Settlement - Architecture
 
 ## Overview
 
@@ -159,7 +159,7 @@ Vault: user.collateral -= 50
 ## File Structure
 
 ```
-volera-settlement/
+anduin-settlement/
 ├── contracts/
 │   ├── src/
 │   │   ├── UnifiedAccountVault.sol

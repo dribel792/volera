@@ -1,10 +1,10 @@
-# Volera Settlement — Go-to-Market Strategy
+# Anduin Settlement — Go-to-Market Strategy
 
 ---
 
 ## The Core Challenge
 
-Volera sells settlement infrastructure to CFD brokers and crypto exchanges. The moment a big broker sees the product working, their CTO will ask: "Why don't we just build this ourselves?"
+Anduin sells settlement infrastructure to CFD brokers and crypto exchanges. The moment a big broker sees the product working, their CTO will ask: "Why don't we just build this ourselves?"
 
 **This is the central strategic problem. Every decision below is designed to make "build it yourself" the wrong answer.**
 
@@ -20,7 +20,7 @@ Let's be honest about the threat:
 4. **Data sensitivity.** Brokers don't want a third party seeing their flow data.
 5. **Regulatory control.** They want to own the compliance story.
 
-If we sell a product that a senior engineer can replicate in 3 months, we're dead after the first client. The strategy must make Volera **harder to replicate than it is to buy.**
+If we sell a product that a senior engineer can replicate in 3 months, we're dead after the first client. The strategy must make Anduin **harder to replicate than it is to buy.**
 
 ---
 
@@ -32,7 +32,7 @@ If we sell a product that a senior engineer can replicate in 3 months, we're dea
 
 Phase 1 is a single-broker vault — that's the MVP, that's what gets us in the door. But the real product is Phase 2: **cross-broker netting.**
 
-When Broker A's client wins $10K and Broker B's client loses $8K on the same underlying, Volera nets the flows. Instead of two separate USDC transfers, there's one $2K net settlement. This saves:
+When Broker A's client wins $10K and Broker B's client loses $8K on the same underlying, Anduin nets the flows. Instead of two separate USDC transfers, there's one $2K net settlement. This saves:
 - Gas costs (fewer transactions)
 - Capital efficiency (less liquidity locked)
 - Counterparty risk (neutral third-party settlement)
@@ -95,7 +95,7 @@ For a broker running their own settlement:
 - No offset against other brokers' clients
 - Full capital reserved for worst-case
 
-On the Volera network:
+On the Anduin network:
 - Cross-broker netting reduces gross settlement by 40-70%
 - Less capital locked in settlement = more capital for growth
 - We can offer settlement financing (advance funds against validated outcomes — note the overlap with Outcome Layer)
@@ -120,7 +120,7 @@ The CFO will block the CTO from building in-house when they see the capital effi
 
 "You're doing settlement in spreadsheets and manual transfers. Your clients wait hours or days for withdrawals. One operations person does reconciliation manually every morning.
 
-Volera automates this. Your clients deposit USDC on-chain. PnL settles in seconds. Reconciliation is automatic. You deploy in a week.
+Anduin automates this. Your clients deposit USDC on-chain. PnL settles in seconds. Reconciliation is automatic. You deploy in a week.
 
 Cost: X bps on settled volume. ROI: you eliminate 1-2 ops headcount and reduce client churn from slow withdrawals."
 
@@ -144,7 +144,7 @@ Once you have 3-5 brokers on the platform:
 
 **The pitch changes:**
 
-"You're already using Volera for settlement. Now we're connecting you to a netting network. Broker X and Broker Z are already on it.
+"You're already using Anduin for settlement. Now we're connecting you to a netting network. Broker X and Broker Z are already on it.
 
 When your client wins and Broker X's client loses on the same underlying, we net the flows. Instead of two separate USDC transfers, there's one net settlement.
 
@@ -168,7 +168,7 @@ Now you have:
 
 We process $X million in settlement monthly across Y brokers. Our netting network reduces gross settlement by Z%. Our compliance wrapper is [audited/licensed/approved].
 
-You can build this yourself — it'll take 12-18 months and a team of 5-8 engineers. Or you can deploy Volera in 4 weeks and join a network your competitors are already on.
+You can build this yourself — it'll take 12-18 months and a team of 5-8 engineers. Or you can deploy Anduin in 4 weeks and join a network your competitors are already on.
 
 Building gives you a vault. Buying gives you a network."
 
@@ -231,7 +231,7 @@ Speak the language of brokers, not the language of crypto.
 | 5 | "What Regulators Actually Want from Crypto Settlement" | LinkedIn |
 | 6 | "Cross-Broker Netting: Why No Single Broker Can Build This" | Blog + LinkedIn |
 | 7 | "Settlement Infrastructure vs. Building In-House: The Real Cost" | Blog (gated → lead gen) |
-| 8 | "The Volera Network: [X] Brokers, [$Y] Settled, [Z]% Netting Efficiency" | LinkedIn + PR |
+| 8 | "The Anduin Network: [X] Brokers, [$Y] Settled, [Z]% Netting Efficiency" | LinkedIn + PR |
 
 ### Conference Strategy
 
@@ -332,7 +332,7 @@ Speak the language of brokers, not the language of crypto.
 
 ## The Endgame
 
-Volera becomes the **neutral settlement network for crypto trading platforms.** Not a product a broker deploys — a network a broker joins.
+Anduin becomes the **neutral settlement network for crypto trading platforms.** Not a product a broker deploys — a network a broker joins.
 
 The vault is the entry point.
 The netting network is the lock-in.

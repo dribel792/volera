@@ -5,10 +5,10 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
-/// @title VoleraSecurity
+/// @title AnduinSecurity
 /// @notice ERC20 security token with mint/burn capabilities for tokenized securities.
 ///         Each instance represents one security (e.g., vAAPL, vTSLA, vGOLD).
-contract VoleraSecurity is ERC20, ERC20Burnable, AccessControl {
+contract AnduinSecurity is ERC20, ERC20Burnable, AccessControl {
     
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");

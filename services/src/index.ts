@@ -7,7 +7,7 @@ import { startApi } from "./api.js";
 import { getDb } from "./db.js";
 
 console.log("═══════════════════════════════════════════════════");
-console.log("  Volera Settlement Services");
+console.log("  Anduin Settlement Services");
 console.log("═══════════════════════════════════════════════════");
 console.log(`  RPC:    ${config.rpcUrl}`);
 console.log(`  Chain:  ${config.chainId}`);

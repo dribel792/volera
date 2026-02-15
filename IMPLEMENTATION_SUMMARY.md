@@ -1,7 +1,7 @@
-# Volera Settlement — Implementation Summary
+# Anduin Settlement — Implementation Summary
 
 **Date:** 2026-02-11  
-**Agent:** Subagent volera-overhaul  
+**Agent:** Subagent anduin-overhaul  
 **Scope:** Critical fixes, new features design, comprehensive documentation
 
 ---
@@ -182,7 +182,7 @@
 
 #### Updated Files:
 - ✅ `README.md`: Added "Upcoming Features" section with links to architecture docs
-- ✅ `PRODUCT_LINES.md`: Expanded Volera Settlement with Phase 2 features
+- ✅ `PRODUCT_LINES.md`: Expanded Anduin Settlement with Phase 2 features
 - ✅ `docs/ARCHITECTURE.md`: Added "Phase 2 Features" section
 - ✅ `tickets/TICKETS.md`: Complete rewrite with:
   - 3 CRITICAL bugs (all documented with fixes)
@@ -295,7 +295,7 @@
 ## 📁 File Structure
 
 ```
-volera-settlement/
+anduin-settlement/
 ├── contracts/
 │   ├── src/
 │   │   ├── UnifiedAccountVault.sol         [UPDATED: refId + guards]

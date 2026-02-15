@@ -1,4 +1,4 @@
-// Volera Landing Page JavaScript
+// Anduin Landing Page JavaScript
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -60,4 +60,4 @@ if (ctaForm) {
     });
 }
 
-console.log('Volera | Instant Settlement Infrastructure');
+console.log('Anduin | Instant Settlement Infrastructure');

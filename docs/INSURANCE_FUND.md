@@ -2,7 +2,7 @@
 
 **Protecting the system from underwater accounts and socialized losses.**
 
-The insurance fund is Volera's safety mechanism that covers trading losses when a user's collateral is insufficient. It acts as the second line of defense in the settlement waterfall, preventing individual user shortfalls from impacting other traders.
+The insurance fund is Anduin's safety mechanism that covers trading losses when a user's collateral is insufficient. It acts as the second line of defense in the settlement waterfall, preventing individual user shortfalls from impacting other traders.
 
 ---
 
@@ -450,7 +450,7 @@ A: No. The contract prevents this by tracking shortfalls in `totalSocializedLoss
 
 ## Summary
 
-The insurance fund is Volera's **safety net** — it protects the broker pool from individual trader blowups and prevents socialized losses from impacting other users.
+The insurance fund is Anduin's **safety net** — it protects the broker pool from individual trader blowups and prevents socialized losses from impacting other users.
 
 **Key Takeaways:**
 
@@ -468,4 +468,4 @@ The insurance fund is Volera's **safety net** — it protects the broker pool fr
 - Use multisig for admin operations
 - Replenish from trading fees automatically
 
-The insurance fund is not just a feature — it's a **fundamental risk management tool** that keeps Volera resilient in volatile markets.
+The insurance fund is not just a feature — it's a **fundamental risk management tool** that keeps Anduin resilient in volatile markets.

@@ -1,6 +1,6 @@
-# Volera Documentation Index
+# Anduin Documentation Index
 
-**Complete technical documentation for the Volera settlement infrastructure.**
+**Complete technical documentation for the Anduin settlement infrastructure.**
 
 ---
 
@@ -63,7 +63,7 @@ High-level system architecture and component overview.
 - Tech stack decisions
 
 **Read this if:**
-- You're new to Volera and need a system overview
+- You're new to Anduin and need a system overview
 - You're onboarding engineers
 - You need to understand how all the pieces fit together
 

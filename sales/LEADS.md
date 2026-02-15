@@ -1,4 +1,4 @@
-# Volera Lead List — B2B Broker & Exchange Targets
+# Anduin Lead List — B2B Broker & Exchange Targets
 
 ## Tier 1: CFD Brokers (Want Crypto Access)
 *Pain: Retail wants crypto exposure, but spinning up custody/exchange infra is expensive*
@@ -104,7 +104,7 @@ Noticed [BROKER] is expanding crypto offerings. Quick question:
 
 Are you running your own custody/settlement, or relying on a third party?
 
-We built Volera — instant DVP (delivery vs payment) for tokenized securities on-chain. 
+We built Anduin — instant DVP (delivery vs payment) for tokenized securities on-chain. 
 Think T+0 settlement, no counterparty risk, no custody overhead.
 
 Already working with [social proof if any].
@@ -126,7 +126,7 @@ Problem: Traditional securities = T+2 settlement, custody nightmares, regulatory
 
 Solution: Tokenized securities with instant on-chain DVP. Your users never leave your platform.
 
-We're Volera — built specifically for this. Let me show you how [COMPETITOR] is doing it.
+We're Anduin — built specifically for this. Let me show you how [COMPETITOR] is doing it.
 
 15 min call this week?
 

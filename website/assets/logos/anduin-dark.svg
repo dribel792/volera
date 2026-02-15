@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shieldGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0e7ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c7d2fe;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .wordmark-dark { fill: #e0e7ff; font-family: system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.5px; }
+    </style>
+  </defs>
+  <!-- Shield icon (light version) -->
+  <g transform="translate(15, 10) scale(0.65)">
+    <path d="M30 8 L48 14 L48 28 Q48 40 30 52 Q12 40 12 28 L12 14 Z" fill="url(#shieldGradDark)"/>
+    <path d="M22 20 L30 38 L38 20 L34 20 L30 30 L26 20 Z" fill="#1e1b4b"/>
+  </g>
+  <!-- Wordmark (light) -->
+  <text x="65" y="40" class="wordmark-dark">ANDUIN</text>
+</svg>

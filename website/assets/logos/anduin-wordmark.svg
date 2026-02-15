@@ -1,0 +1,8 @@
+<svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .wordmark { fill: #6366f1; font-family: system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.5px; }
+    </style>
+  </defs>
+  <text x="100" y="40" text-anchor="middle" class="wordmark">ANDUIN</text>
+</svg>

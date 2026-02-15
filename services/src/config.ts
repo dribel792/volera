@@ -40,5 +40,5 @@ export const config = {
   mockWallets: env("MOCK_WALLETS", "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266").split(",") as `0x${string}`[],
 
   // Database
-  dbPath: env("DB_PATH", "./volera.sqlite"),
+  dbPath: env("DB_PATH", "./anduin.sqlite"),
 } as const;

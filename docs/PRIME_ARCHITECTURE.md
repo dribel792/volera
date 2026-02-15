@@ -1,4 +1,4 @@
-# Volera Prime Layer — Cross-Venue Trading Architecture
+# Anduin Prime Layer — Cross-Venue Trading Architecture
 
 ## Vision
 
@@ -233,7 +233,7 @@ If user's margin falls below maintenance level:
 3. If still undercollateralized → close next largest loss
 4. If still underwater → use venue insurance fund
 5. If insurance insufficient → socialize losses across venue users
-6. Volera backstop fund (last resort)
+6. Anduin backstop fund (last resort)
 ```
 
 ```solidity
@@ -332,7 +332,7 @@ class HyperliquidConnector implements IVenueConnector {
 - Gross exposure: $100k across 3 venues
 - Net exposure: $40k (60% netted)
 - Margin saved: $6k
-- Volera fee (10%): $600
+- Anduin fee (10%): $600
 - **User net savings: $5.4k**
 
 ---
@@ -404,7 +404,7 @@ class HyperliquidConnector implements IVenueConnector {
 **Problem:** Venues settle at different times (hourly vs daily)
 
 **Solution:**
-- Volera settles hourly (most frequent)
+- Anduin settles hourly (most frequent)
 - Per-venue settlement windows
 - Net settlements before submitting on-chain
 
@@ -498,13 +498,13 @@ If a venue goes insolvent:
 
 ## Conclusion
 
-**Volera Prime Layer** solves the liquidity fragmentation problem:
+**Anduin Prime Layer** solves the liquidity fragmentation problem:
 - **One deposit → trade everywhere**
 - **Cross-venue netting** = 60% margin savings
 - **Instant settlement** = no withdrawal delays
 - **Default waterfall** = protects venues and users
 
-This is the **future of multi-venue trading** — and Volera is building it.
+This is the **future of multi-venue trading** — and Anduin is building it.
 
 ---
 

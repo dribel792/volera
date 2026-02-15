@@ -2,7 +2,7 @@
 
 **Connecting traditional trading venues to on-chain settlement.**
 
-Volera's exchange integration layer bridges the gap between off-chain trading platforms and on-chain settlement. When a position closes on a broker or exchange, the integration adapter captures it, normalizes the data, and triggers instant settlement to the user's on-chain vault.
+Anduin's exchange integration layer bridges the gap between off-chain trading platforms and on-chain settlement. When a position closes on a broker or exchange, the integration adapter captures it, normalizes the data, and triggers instant settlement to the user's on-chain vault.
 
 ---
 
@@ -514,7 +514,7 @@ bybit.onPositionClose((position) => {
 **Integration Method:**
 - MetaTrader Expert Advisor (EA) running on user's MT5 terminal
 - EA monitors position closes
-- EA sends HTTP POST to Volera settlement service
+- EA sends HTTP POST to Anduin settlement service
 - Service processes and triggers on-chain settlement
 
 **Data Format:**
@@ -536,7 +536,7 @@ bybit.onPositionClose((position) => {
 
 - **Massive user base** — 1M+ traders worldwide
 - **Traditional markets** — Access to forex, gold, indices
-- **Retail focus** — Perfect for Volera's target audience
+- **Retail focus** — Perfect for Anduin's target audience
 
 ---
 
@@ -1071,7 +1071,7 @@ class HealthMonitor {
 Load adapters from npm packages:
 
 ```typescript
-const adapter = await import(`@volera/adapter-${venueName}`);
+const adapter = await import(`@anduin/adapter-${venueName}`);
 ```
 
 ### 3. Webhook Support
@@ -1120,7 +1120,7 @@ A: Yes, but DEXs work differently (on-chain swaps). You'd create a different ada
 
 ## Summary
 
-Volera's exchange integration layer is a **modular, extensible system** that:
+Anduin's exchange integration layer is a **modular, extensible system** that:
 
 ✅ Supports 8 venues (CEX + CFD)  
 ✅ Real-time price aggregation  

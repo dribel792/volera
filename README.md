@@ -1,8 +1,8 @@
-# Volera — Instant Settlement Infrastructure
+# Anduin — Instant Settlement Infrastructure
 
 **On-chain settlement infrastructure for crypto trading platforms.**
 
-Volera enables instant, verifiable settlement for derivatives and tokenized securities. When a trade closes, PnL settles to the trader's wallet in seconds. When a trader wants their position as a token, it's delivered atomically against payment.
+Anduin enables instant, verifiable settlement for derivatives and tokenized securities. When a trade closes, PnL settles to the trader's wallet in seconds. When a trader wants their position as a token, it's delivered atomically against payment.
 
 ---
 
@@ -19,7 +19,7 @@ This is the plumbing problem of crypto trading. Everyone builds the shiny front-
 
 ---
 
-## What Volera Does
+## What Anduin Does
 
 ### Pillar 1: Issuance (Phase 2)
 Regulated issuance of tokenized securities, structured products, and derivatives:
@@ -83,14 +83,14 @@ Trader Wallet ←→ UnifiedAccountVault (Base L2)
 1. **Trader deposits collateral** (USDC) into an on-chain vault
 2. **Trader trades** on a connected platform as normal
 3. **Trade closes** — broker reports realized PnL
-4. **Volera settles instantly:**
+4. **Anduin settles instantly:**
    - **Profit →** USDC credited to trader's PnL balance
    - **Loss →** Collateral seized to broker pool
 5. **Trader withdraws** whenever they want — no delays
 
 ### The Key Insight
 
-Volera splits user funds into two buckets:
+Anduin splits user funds into two buckets:
 - **Collateral** — at-risk capital that can be seized on losses
 - **PnL** — winnings that are *never* seizable, only withdrawable
 
@@ -100,7 +100,7 @@ This separation means traders always keep their profits, and platforms always re
 
 ## Security Token Delivery (DVP)
 
-Beyond PnL settlement, Volera handles atomic delivery of security tokens:
+Beyond PnL settlement, Anduin handles atomic delivery of security tokens:
 
 | Flow | Description |
 |------|-------------|
@@ -148,7 +148,7 @@ function executeDetokenize(address user, address token, uint256 amount, bytes32 
 
 ## Safety Features
 
-Volera implements enterprise-grade safety mechanisms to protect against edge cases and attacks:
+Anduin implements enterprise-grade safety mechanisms to protect against edge cases and attacks:
 
 | Feature | Status | Description |
 |---------|--------|-------------|
@@ -177,7 +177,7 @@ Before going live:
 
 ## Insurance Fund
 
-Volera includes a built-in **insurance fund** to handle underwater accounts and prevent socialized losses.
+Anduin includes a built-in **insurance fund** to handle underwater accounts and prevent socialized losses.
 
 ### How It Works
 
@@ -220,7 +220,7 @@ Result:
 
 ## Exchange Integrations
 
-Volera connects to **8 trading venues** via a modular adapter system:
+Anduin connects to **8 trading venues** via a modular adapter system:
 
 | Venue | Type | Markets | Integration |
 |-------|------|---------|-------------|
@@ -258,7 +258,7 @@ Exchange WebSocket
 ### Quick Example
 
 ```typescript
-import { AdapterFactory, PriceAggregator, SettlementBridge } from '@volera/integrations';
+import { AdapterFactory, PriceAggregator, SettlementBridge } from '@anduin/integrations';
 
 // Create adapters
 const bybit = AdapterFactory.createAdapter('bybit');
@@ -357,14 +357,14 @@ Key docs:
 ## Project Structure
 
 ```
-volera-settlement/
+anduin-settlement/
 ├── contracts/
 │   └── src/
 │       ├── UnifiedAccountVault.sol   # Core PnL settlement
 │       ├── SecurityTokenVault.sol    # DVP for security tokens
 │       ├── TradingHoursGuard.sol     # Trading hours & halts
 │       ├── OracleGuard.sol           # Price validation
-│       ├── VoleraSecurity.sol        # ERC20 security token
+│       ├── AnduinSecurity.sol        # ERC20 security token
 │       └── MockUSDC.sol              # Testnet USDC
 ├── services/
 │   ├── bridge/                       # Broker Bridge
@@ -412,4 +412,4 @@ cd frontend && npm run dev
 
 ## Contact
 
-Building Volera. Reach out if you're a platform that moves money too slowly.
+Building Anduin. Reach out if you're a platform that moves money too slowly.

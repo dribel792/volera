@@ -1,6 +1,6 @@
 # Edge Case Safety Features
 
-This document describes the 8 edge case safety features implemented in the Volera settlement contracts.
+This document describes the 8 edge case safety features implemented in the Anduin settlement contracts.
 
 ## 1. Circuit Breaker (CRITICAL) ✅
 

@@ -1,4 +1,4 @@
-# ChatGPT Conversation: xStocks Analysis & Volera Business Model
+# ChatGPT Conversation: xStocks Analysis & Anduin Business Model
 
 **Source:** https://chatgpt.com/share/6965fa47-1f8c-8003-92b6-8723693fe0b3
 **Captured:** 2026-02-06
@@ -7,7 +7,7 @@
 
 ## Summary
 
-This conversation developed the full Volera business model through iterative discussion, covering:
+This conversation developed the full Anduin business model through iterative discussion, covering:
 - Competitive analysis of xStocks and Ondo
 - Vampire attack strategies for liquidity acquisition
 - In-wallet trading infrastructure for brokers
@@ -27,7 +27,7 @@ This conversation developed the full Volera business model through iterative dis
 - Regulatory position is "shaky" - prospectus could be withdrawn
 - Jersey SPV structure provides regulatory arbitrage (if EU withdraws approval, Jersey entity continues)
 
-### Volera's Three Pillars
+### Anduin's Three Pillars
 
 #### Pillar 1: Issuance
 - Regulated vanilla & non-vanilla products (equities, commodities, precious metals, crypto-linked)
@@ -115,7 +115,7 @@ function unpause() external onlyPauser;
 ### Clearing House Threat
 - Another company building a clearing house for tokenized assets
 - 1:1 swaps between xApple, onApple (Ondo), etc.
-- Open ecosystem vs Volera's "canibalizing" approach
+- Open ecosystem vs Anduin's "canibalizing" approach
 
 ### Response Strategies
 1. **Tokenized Securities as a Service** - offer brokers their own branded tokens (krakenApple, etoroApple)

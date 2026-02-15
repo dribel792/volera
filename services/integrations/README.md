@@ -1,6 +1,6 @@
-# Volera Exchange/Broker Integration Adapters
+# Anduin Exchange/Broker Integration Adapters
 
-This directory contains modular adapters for integrating with 8 major cryptocurrency exchanges and CFD brokers. The adapters provide real-time price feeds and position monitoring infrastructure for the Volera settlement system.
+This directory contains modular adapters for integrating with 8 major cryptocurrency exchanges and CFD brokers. The adapters provide real-time price feeds and position monitoring infrastructure for the Anduin settlement system.
 
 ## Architecture Overview
 
@@ -469,4 +469,4 @@ When adding a new venue adapter:
 
 ## Support
 
-For questions or issues, contact the Volera team or open an issue on GitHub.
+For questions or issues, contact the Anduin team or open an issue on GitHub.

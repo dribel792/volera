@@ -5,7 +5,7 @@ import { ClosedPosition } from './types';
  * Settlement Bridge: Maps venue position closes to on-chain settlement calls
  * 
  * This is the critical piece that translates off-chain trading events into
- * on-chain state changes in the VoleraSettlement contract.
+ * on-chain state changes in the AnduinSettlement contract.
  */
 
 export interface SettlementAction {

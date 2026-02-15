@@ -1,4 +1,4 @@
-# Volera Product Lines
+# Anduin Product Lines
 
 *Source: Internal deck (Feb 2025)*
 
@@ -8,7 +8,7 @@ Three product lines enabling brokers/exchanges to acquire new users:
 
 ---
 
-## 1. Volera Lending
+## 1. Anduin Lending
 
 **What it does:**
 - In-app margin: loans to retail platforms for client leverage
@@ -26,7 +26,7 @@ Three product lines enabling brokers/exchanges to acquire new users:
 
 ---
 
-## 2. Volera Issuance
+## 2. Anduin Issuance
 
 **What it does:**
 - Assets: equities, indices, commodities, precious metals, crypto-linked
@@ -43,7 +43,7 @@ Three product lines enabling brokers/exchanges to acquire new users:
 
 ---
 
-## 3. Volera Settlement
+## 3. Anduin Settlement
 
 **What it does:**
 - Instant PnL settlement (seconds instead of days)

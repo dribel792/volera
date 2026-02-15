@@ -3,13 +3,13 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 import "../src/MockUSDC.sol";
-import "../src/VoleraSecurity.sol";
+import "../src/AnduinSecurity.sol";
 import "../src/SecurityTokenVault.sol";
 
 contract SecurityTokenVaultTest is Test {
     MockUSDC usdc;
     SecurityTokenVault vault;
-    VoleraSecurity aaplToken;
+    AnduinSecurity aaplToken;
 
     address admin = makeAddr("admin");
     address settlementRole = makeAddr("settlement");
@@ -33,8 +33,8 @@ contract SecurityTokenVaultTest is Test {
         );
 
         // Deploy security token with proper constructor args
-        aaplToken = new VoleraSecurity(
-            "Volera Apple",      // tokenName
+        aaplToken = new AnduinSecurity(
+            "Anduin Apple",      // tokenName
             "vAAPL",             // tokenSymbol
             "AAPL",              // securitySymbol
             "Apple Inc.",        // securityName

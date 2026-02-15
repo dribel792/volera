@@ -1,7 +1,7 @@
 {
-  "name": "@volera/integrations",
+  "name": "@anduin/integrations",
   "version": "1.0.0",
-  "description": "Exchange and broker integration adapters for Volera settlement system",
+  "description": "Exchange and broker integration adapters for Anduin settlement system",
   "type": "module",
   "main": "./types.ts",
   "scripts": {
