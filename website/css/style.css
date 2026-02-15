@@ -1,17 +1,19 @@
-/* Volera - Professional Landing Page Styles */
+/* Anduin - Professional Light Theme */
 
 :root {
     --primary: #6366f1;
     --primary-dark: #4f46e5;
+    --primary-light: #eef2ff;
     --secondary: #0ea5e9;
     --accent: #22c55e;
-    --dark: #0f172a;
-    --dark-light: #1e293b;
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
-    --border: #334155;
+    --bg: #ffffff;
+    --bg-alt: #f8fafc;
+    --bg-card: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
     --gradient: linear-gradient(135deg, #6366f1, #0ea5e9);
-    --card-bg: rgba(30, 41, 59, 0.5);
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
 }
 
 * {
@@ -26,7 +28,7 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--dark);
+    background: var(--bg);
     color: var(--text);
     line-height: 1.6;
 }
@@ -41,6 +43,7 @@ body {
 h1, h2, h3, h4 {
     font-weight: 600;
     line-height: 1.2;
+    color: var(--text);
 }
 
 h1 { font-size: 3.5rem; }
@@ -76,18 +79,19 @@ h3 { font-size: 1.5rem; }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
 }
 
 .btn-secondary {
     background: transparent;
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     color: var(--text);
 }
 
 .btn-secondary:hover {
     border-color: var(--primary);
     color: var(--primary);
+    background: var(--primary-light);
 }
 
 .btn-large {
@@ -103,9 +107,10 @@ h3 { font-size: 1.5rem; }
     right: 0;
     z-index: 1000;
     padding: 20px 0;
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .navbar .container {
@@ -124,6 +129,10 @@ h3 { font-size: 1.5rem; }
     text-decoration: none;
 }
 
+.logo img {
+    height: 36px;
+}
+
 .logo-icon {
     color: var(--primary);
     font-size: 1.8rem;
@@ -139,6 +148,7 @@ h3 { font-size: 1.5rem; }
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.2s;
+    font-weight: 500;
 }
 
 .nav-links a:hover {
@@ -152,8 +162,9 @@ h3 { font-size: 1.5rem; }
     display: flex;
     align-items: center;
     background: 
-        radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15), transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(14, 165, 233, 0.1), transparent 50%);
+        radial-gradient(ellipse at top, rgba(99, 102, 241, 0.08), transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(14, 165, 233, 0.05), transparent 50%),
+        var(--bg);
 }
 
 .hero .container {
@@ -166,12 +177,13 @@ h3 { font-size: 1.5rem; }
 .hero-badge {
     display: inline-block;
     padding: 8px 16px;
-    background: var(--card-bg);
+    background: var(--primary-light);
     border: 1px solid var(--border);
     border-radius: 100px;
     font-size: 0.875rem;
-    color: var(--text-muted);
+    color: var(--primary-dark);
     margin-bottom: 24px;
+    font-weight: 500;
 }
 
 .hero h1 {
@@ -218,8 +230,9 @@ h3 { font-size: 1.5rem; }
 }
 
 .flow-diagram {
-    background: var(--card-bg);
+    background: var(--bg-card);
     border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
     border-radius: 16px;
     padding: 48px;
     display: flex;
@@ -235,8 +248,9 @@ h3 { font-size: 1.5rem; }
 }
 
 .flow-node.broker {
-    background: var(--dark-light);
-    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    border: 2px solid var(--border);
+    color: var(--text);
 }
 
 .flow-node.volera {
@@ -262,7 +276,7 @@ h3 { font-size: 1.5rem; }
 /* Problem Section */
 .problem-section {
     padding: 120px 0;
-    background: var(--dark-light);
+    background: var(--bg-alt);
 }
 
 .section-title {
@@ -284,15 +298,18 @@ h3 { font-size: 1.5rem; }
 }
 
 .problem-card {
-    background: var(--dark);
+    background: var(--bg-card);
+    box-shadow: var(--card-shadow);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 32px;
-    transition: transform 0.2s;
+    transition: all 0.3s;
 }
 
 .problem-card:hover {
     transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-color: var(--primary);
 }
 
 .problem-icon {
@@ -313,6 +330,7 @@ h3 { font-size: 1.5rem; }
 /* Solutions Section */
 .solutions-section {
     padding: 120px 0;
+    background: var(--bg);
 }
 
 .pillars {
@@ -322,8 +340,9 @@ h3 { font-size: 1.5rem; }
 }
 
 .pillar {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    box-shadow: var(--card-shadow);
     border-radius: 16px;
     padding: 40px;
     position: relative;
@@ -332,11 +351,12 @@ h3 { font-size: 1.5rem; }
 
 .pillar:hover {
     border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .pillar.featured {
     border-color: var(--primary);
-    background: linear-gradient(180deg, rgba(99, 102, 241, 0.1), transparent);
+    background: linear-gradient(180deg, var(--primary-light), var(--bg-card));
 }
 
 .pillar-badge {
@@ -384,12 +404,13 @@ h3 { font-size: 1.5rem; }
     position: absolute;
     left: 0;
     color: var(--accent);
+    font-weight: 600;
 }
 
 /* How It Works Section */
 .how-it-works {
     padding: 120px 0;
-    background: var(--dark-light);
+    background: var(--bg-alt);
 }
 
 .flow-steps {
@@ -403,10 +424,16 @@ h3 { font-size: 1.5rem; }
     grid-template-columns: 60px 1fr 300px;
     gap: 32px;
     align-items: center;
-    background: var(--dark);
+    background: var(--bg-card);
     border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
     border-radius: 16px;
     padding: 32px;
+    transition: all 0.3s;
+}
+
+.flow-step:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .step-number {
@@ -419,6 +446,7 @@ h3 { font-size: 1.5rem; }
     border-radius: 50%;
     font-size: 1.5rem;
     font-weight: 700;
+    color: white;
 }
 
 .step-content h3 {
@@ -442,13 +470,17 @@ h3 { font-size: 1.5rem; }
 
 .mf-node {
     padding: 8px 16px;
-    background: var(--dark-light);
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
     border-radius: 6px;
     font-size: 0.875rem;
+    color: var(--text);
 }
 
 .mf-node.highlight {
     background: var(--gradient);
+    color: white;
+    border: none;
 }
 
 .mf-arrow {
@@ -456,7 +488,7 @@ h3 { font-size: 1.5rem; }
 }
 
 .netting-example {
-    background: var(--dark-light);
+    background: var(--bg-alt);
     border-radius: 8px;
     padding: 16px;
     width: 100%;
@@ -471,7 +503,7 @@ h3 { font-size: 1.5rem; }
 }
 
 .net-row.total {
-    border-top: 1px solid var(--border);
+    border-top: 2px solid var(--border);
     margin-top: 8px;
     padding-top: 16px;
     color: var(--accent);
@@ -492,7 +524,7 @@ h3 { font-size: 1.5rem; }
 
 .finality-badge {
     background: var(--accent);
-    color: var(--dark);
+    color: white;
     padding: 12px 24px;
     border-radius: 8px;
     font-weight: 600;
@@ -501,6 +533,7 @@ h3 { font-size: 1.5rem; }
 /* DVP Section */
 .dvp-section {
     padding: 120px 0;
+    background: var(--bg);
 }
 
 .dvp-diagram {
@@ -514,8 +547,9 @@ h3 { font-size: 1.5rem; }
 .dvp-party {
     text-align: center;
     padding: 32px;
-    background: var(--card-bg);
+    background: var(--bg-card);
     border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
     border-radius: 16px;
 }
 
@@ -526,9 +560,11 @@ h3 { font-size: 1.5rem; }
 
 .dvp-asset {
     padding: 16px 24px;
-    background: var(--dark);
+    background: var(--bg-alt);
+    border: 2px solid var(--border);
     border-radius: 8px;
     font-weight: 600;
+    color: var(--text);
 }
 
 .dvp-center {
@@ -540,6 +576,7 @@ h3 { font-size: 1.5rem; }
     border-radius: 16px;
     padding: 32px;
     margin-bottom: 16px;
+    color: white;
 }
 
 .dvp-contract span {
@@ -556,8 +593,9 @@ h3 { font-size: 1.5rem; }
 
 .dvp-arrow {
     padding: 8px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(99, 102, 241, 0.1);
     border-radius: 4px;
+    color: var(--text);
 }
 
 .dvp-status {
@@ -585,7 +623,7 @@ h3 { font-size: 1.5rem; }
 /* Benefits Section */
 .benefits-section {
     padding: 120px 0;
-    background: var(--dark-light);
+    background: var(--bg-alt);
 }
 
 .benefits-grid {
@@ -595,8 +633,9 @@ h3 { font-size: 1.5rem; }
 }
 
 .benefit-card {
-    background: var(--dark);
+    background: var(--bg-card);
     border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
     border-radius: 16px;
     padding: 40px;
     text-align: center;
@@ -606,6 +645,7 @@ h3 { font-size: 1.5rem; }
 .benefit-card:hover {
     border-color: var(--primary);
     transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .benefit-metric {
@@ -630,6 +670,7 @@ h3 { font-size: 1.5rem; }
 /* Tech Section */
 .tech-section {
     padding: 80px 0;
+    background: var(--bg);
 }
 
 .tech-grid {
@@ -641,9 +682,15 @@ h3 { font-size: 1.5rem; }
 .tech-item {
     text-align: center;
     padding: 32px;
-    background: var(--card-bg);
+    background: var(--bg-card);
     border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
     border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.tech-item:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .tech-logo {
@@ -671,7 +718,7 @@ h3 { font-size: 1.5rem; }
 }
 
 .cta-content > p {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.9);
     margin-bottom: 32px;
     font-size: 1.25rem;
 }
@@ -690,26 +737,36 @@ h3 { font-size: 1.5rem; }
     border-radius: 8px;
     font-size: 1rem;
     background: white;
+    color: var(--text);
+}
+
+.cta-input::placeholder {
+    color: var(--text-muted);
 }
 
 .cta-section .btn-primary {
-    background: var(--dark);
-    color: white;
+    background: white;
+    color: var(--primary);
+}
+
+.cta-section .btn-primary:hover {
+    background: var(--bg-alt);
 }
 
 .cta-note {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.8);
     font-size: 0.875rem;
 }
 
 .cta-note a {
     color: white;
+    text-decoration: underline;
 }
 
 /* Footer */
 .footer {
     padding: 80px 0 40px;
-    background: var(--dark);
+    background: #f1f5f9;
     border-top: 1px solid var(--border);
 }
 
@@ -721,15 +778,20 @@ h3 { font-size: 1.5rem; }
 }
 
 .footer-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-brand img {
+    height: 32px;
+    width: auto;
 }
 
 .footer-brand p {
     font-size: 0.95rem;
     font-weight: 400;
     color: var(--text-muted);
-    margin-top: 16px;
 }
 
 .footer-links {
