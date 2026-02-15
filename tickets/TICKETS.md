@@ -424,17 +424,225 @@ Core vault managing per-user collateral and PnL sub-ledgers with broker pool.
 
 ---
 
-## Immediate Action Items (This Week)
+## Epic 4: Operational Infrastructure (NEW)
 
-1. **VS-C001:** Fix seizeCollateral double-seize bug
-2. **VS-C002:** Wire in OracleGuard and TradingHoursGuard
-3. **VS-C003:** Write SecurityTokenVault tests
-4. **VS-H003:** Create .env.example
-5. **VS-F001:** Design private settlements
-6. **VS-F010:** Design batch settlements
-7. **VS-F020:** Design multi-collateral
-8. **VS-F030:** Write Prime Layer architecture
+### VS-OPS001: API Routes for Admin/Insurance Operations 🟠
+**Priority:** HIGH | **Estimate:** 1 day | **Status:** TODO
+
+**Problem:**
+Admin panel and dashboard exist but API routes for admin operations are missing.
+
+**Fix:**
+Create API routes in `services/api/routes/`:
+1. **Admin routes** (`admin.ts`):
+   - POST `/api/system/pause` — Pause all vaults
+   - POST `/api/system/unpause` — Resume all vaults
+   - GET `/api/system/status` — Get vault status
+2. **Insurance routes** (`insurance.ts`):
+   - GET `/api/insurance/balance` — Get insurance fund balance
+   - POST `/api/insurance/deposit` — Admin deposit to insurance
+   - POST `/api/insurance/withdraw` — Admin withdraw from insurance
+   - GET `/api/insurance/events` — Get insurance event history
+3. **Audit routes** (`audit.ts`):
+   - GET `/api/audit` — Get audit log with pagination
+
+Connect to database.ts for persistence.
+
+**Files:**
+- New: `services/api/routes/admin.ts`
+- New: `services/api/routes/insurance.ts`
+- New: `services/api/routes/audit.ts`
+- Update: `services/api/server.ts` to mount routes
 
 ---
 
-*Last updated: 2026-02-11*
+### VS-OPS002: Integrate Database into Settlement Engine 🟠
+**Priority:** HIGH | **Estimate:** 0.5 day | **Status:** TODO
+
+**Problem:**
+Settlement engine still uses in-memory Maps. Need to switch to SQLite persistence.
+
+**Fix:**
+1. Update `services/api/services/settlement-engine.ts`:
+   - Replace all Map operations with database calls
+   - Use `settlementDb.create()`, `settlementDb.findById()`, etc.
+2. Update `services/api/routes/settlements.ts`:
+   - Query database instead of in-memory store
+3. Update `services/api/routes/clients.ts`:
+   - Query database instead of in-memory store
+
+**Files:**
+- `services/api/services/settlement-engine.ts`
+- `services/api/routes/settlements.ts`
+- `services/api/routes/clients.ts`
+
+---
+
+### VS-OPS003: Keeper Integration with Exchange Adapters 🟡
+**Priority:** MEDIUM | **Estimate:** 2 days | **Status:** TODO
+
+**Problem:**
+Keeper has placeholder code for polling exchange adapters. Need real integration.
+
+**Fix:**
+1. Create exchange adapter interface in `services/keeper/adapters/`:
+   - `IExchangeAdapter.ts` — Interface for all adapters
+   - `BinanceAdapter.ts` — Example adapter for Binance
+   - `MockAdapter.ts` — For testing
+2. Update keeper to:
+   - Load adapters from config
+   - Poll each adapter for position closes
+   - Process events into settlements
+   - Handle errors gracefully
+
+**Files:**
+- New: `services/keeper/adapters/IExchangeAdapter.ts`
+- New: `services/keeper/adapters/BinanceAdapter.ts`
+- New: `services/keeper/adapters/MockAdapter.ts`
+- Update: `services/keeper/keeper.ts`
+
+---
+
+### VS-OPS004: Admin Panel Authentication 🟠
+**Priority:** HIGH | **Estimate:** 1 day | **Status:** TODO
+
+**Problem:**
+Admin panel has no authentication. Anyone can pause vaults, withdraw insurance funds.
+
+**Fix:**
+1. Add JWT auth to API server
+2. Create login endpoint
+3. Add auth middleware to admin routes
+4. Add login page to admin panel
+5. Store JWT in localStorage
+
+**Files:**
+- New: `services/api/middleware/auth.ts`
+- New: `services/admin/login.html`
+- Update: `services/admin/js/admin.js`
+- Update: `services/api/server.ts`
+
+---
+
+### VS-OPS005: Real-time Updates via WebSockets 🟡
+**Priority:** MEDIUM | **Estimate:** 1.5 days | **Status:** TODO
+
+**Problem:**
+Dashboard and admin panel need manual refresh. Want real-time updates.
+
+**Fix:**
+1. Add Socket.IO to API server
+2. Emit events on:
+   - New settlement
+   - Settlement confirmed
+   - Client onboarded
+   - Insurance fund change
+3. Update dashboard/admin to listen for events and auto-update
+
+**Files:**
+- Update: `services/api/server.ts`
+- Update: `services/dashboard/js/*.js`
+- Update: `services/admin/js/admin.js`
+- Add: `socket.io-client` dependency
+
+---
+
+### VS-OPS006: Metrics and Monitoring 🟡
+**Priority:** MEDIUM | **Estimate:** 1 day | **Status:** TODO
+
+**Problem:**
+No monitoring or alerting. Don't know when keeper is down, settlements are failing, etc.
+
+**Fix:**
+1. Add Prometheus metrics to API server:
+   - Settlement count by status
+   - API request latency
+   - Error rates
+2. Add metrics to keeper:
+   - Settlements executed
+   - Keeper balance
+   - Failed transaction count
+3. Create Grafana dashboard config
+4. Add health check endpoints
+
+**Files:**
+- New: `services/api/metrics.ts`
+- New: `services/keeper/metrics.ts`
+- New: `monitoring/grafana-dashboard.json`
+- Update: `services/api/server.ts`
+- Update: `services/keeper/keeper.ts`
+
+---
+
+### VS-OPS007: E2E Tests for Full Settlement Flow 🟠
+**Priority:** HIGH | **Estimate:** 2 days | **Status:** TODO
+
+**Problem:**
+No end-to-end tests. Need to verify full flow works.
+
+**Fix:**
+Write tests that:
+1. Deploy contracts locally (Anvil)
+2. Start API server
+3. Start keeper
+4. Submit position close via mock broker
+5. Verify keeper picks it up
+6. Verify settlement executes on-chain
+7. Verify indexer updates state
+8. Verify recon service sees it
+
+**Files:**
+- New: `services/test/e2e/settlement-flow.test.ts`
+- New: `services/test/setup.ts`
+
+---
+
+### VS-OPS008: Production Deployment Guide 🟡
+**Priority:** MEDIUM | **Estimate:** 0.5 day | **Status:** TODO
+
+**Problem:**
+Docs explain how to run locally. Need production deployment guide.
+
+**Fix:**
+Add to docs:
+1. Docker Compose setup
+2. Systemd service files for keeper
+3. Nginx reverse proxy config
+4. SSL certificate setup (Let's Encrypt)
+5. Backup/restore procedures
+6. Production environment variables
+
+**Files:**
+- New: `docs/PRODUCTION_DEPLOYMENT.md`
+- New: `docker-compose.yml`
+- New: `systemd/anduin-keeper.service`
+- New: `nginx/anduin.conf`
+
+---
+
+## Immediate Action Items (This Week)
+
+### Critical Path (Must Do)
+1. **VS-OPS001:** Create API routes for admin/insurance operations
+2. **VS-OPS002:** Integrate database into settlement engine
+3. **VS-OPS004:** Add authentication to admin panel
+4. **VS-C001:** Fix seizeCollateral double-seize bug
+5. **VS-C002:** Wire in OracleGuard and TradingHoursGuard
+
+### High Priority (Should Do)
+6. **VS-OPS003:** Keeper integration with exchange adapters
+7. **VS-OPS007:** E2E tests for full settlement flow
+8. **VS-H001:** Support SecurityTokenVault in services
+9. **VS-C003:** Write SecurityTokenVault tests
+10. **VS-H003:** Create .env.example
+
+### Nice to Have (Can Do)
+11. **VS-OPS005:** Real-time updates via WebSockets
+12. **VS-OPS006:** Metrics and monitoring
+13. **VS-F001:** Design private settlements
+14. **VS-F010:** Design batch settlements
+15. **VS-F030:** Write Prime Layer architecture
+
+---
+
+*Last updated: 2026-02-15*
