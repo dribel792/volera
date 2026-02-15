@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anduin | Unlock On-Chain Volume for Your Exchange</title>
+    <title>Anduin | Instant PnL Settlement for Exchanges & Brokers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -74,6 +74,39 @@
             transform: scale(1.05);
         }
         .client-icon { font-size: 3rem; margin-bottom: 16px; }
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .flow-step {
+            text-align: center;
+            position: relative;
+        }
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .flow-step:last-child::after {
+            display: none;
+        }
+        .flow-number {
+            background: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -84,156 +117,190 @@
                 <img src="assets/logos/anduin-combined.svg" alt="Anduin" height="36">
             </a>
             <div class="nav-links">
-                <a href="#opportunity">Opportunity</a>
+                <a href="#problem">Problem</a>
                 <a href="#solution">Solution</a>
                 <a href="#roi">ROI</a>
-                <a href="#contact" class="btn btn-primary">Partner With Us</a>
+                <a href="#contact" class="btn btn-primary">Schedule Partnership Call</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section - B2B Focus -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">For Brokers & Exchanges</div>
-                <h1>Tap Into <span class="gradient-text">$40 Billion</span> of Daily On-Chain Volume</h1>
+                <div class="hero-badge">For Crypto Exchanges & CFD Brokers</div>
+                <h1>Settle Trades in <span class="gradient-text">Seconds</span>, Not Days</h1>
                 <p class="hero-subtitle">
-                    60 million users trade on-chain every month. They're not your customers — yet. 
-                    Anduin connects your exchange to DeFi rails, unlocking a new revenue stream without building new infrastructure.
+                    Instant on-chain PnL settlement eliminates counterparty risk and frees up capital locked in margins. 
+                    Real-time margin calls. Cross-broker netting reduces capital requirements by 5x. T+0, 24/7, always-on.
                 </p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary btn-large">Schedule Partnership Call</a>
-                    <a href="#opportunity" class="btn btn-secondary btn-large">See The Opportunity</a>
+                    <a href="#contact" class="btn btn-primary btn-large">See How Much Capital You Can Free</a>
+                    <a href="#problem" class="btn btn-secondary btn-large">Learn More</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-value">60M</span>
-                        <span class="stat-label">Monthly on-chain users</span>
+                        <span class="stat-value">T+0</span>
+                        <span class="stat-label">Instant settlement</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-value">$40B</span>
-                        <span class="stat-label">Daily trading volume</span>
+                        <span class="stat-value">5x</span>
+                        <span class="stat-label">Capital efficiency via netting</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-value">0</span>
-                        <span class="stat-label">Your current share</span>
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Always-on infrastructure</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Opportunity Section -->
-    <section class="problem-section" id="opportunity">
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
         <div class="container">
-            <h2 class="section-title">The Opportunity You're Missing</h2>
-            
-            <div class="highlight-box">
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: center;">
-                    <div>
-                        <div class="stat-huge gradient-text">60M</div>
-                        <p style="font-size: 1.25rem;">Monthly active on-chain traders</p>
-                    </div>
-                    <div>
-                        <div class="stat-huge gradient-text">$40B</div>
-                        <p style="font-size: 1.25rem;">Daily spot + perps volume</p>
-                    </div>
-                    <div>
-                        <div class="stat-huge gradient-text">24/7</div>
-                        <p style="font-size: 1.25rem;">Trading never stops</p>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title">Your Money Is Stuck for Days</h2>
+            <p class="section-subtitle">Settlement delays lock up billions in capital and create systemic risk</p>
             
             <div class="problems-grid">
                 <div class="problem-card">
+                    <div class="problem-icon">⏱️</div>
+                    <h3>T+2 Settlement Delays</h3>
+                    <p>Your money sits with the other side for 48+ hours. You can't use it. You can't move it. It's just... waiting.</p>
+                </div>
+                <div class="problem-card">
                     <div class="problem-icon">🔒</div>
-                    <h3>They're Locked In DeFi</h3>
-                    <p>On-chain users won't move funds to CEX. Self-custody is non-negotiable. Your KYC funnel doesn't work for them.</p>
+                    <h3>Capital Locked in Margins</h3>
+                    <p>Billions trapped in reserve accounts to cover settlement risk. That capital could be working — but it's stuck in escrow.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Counterparty Exposure</h3>
+                    <p>What if they don't settle? What if they blow up mid-trade? Your risk desk monitors dozens of counterparties constantly.</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-icon">📊</div>
-                    <h3>Securities Are Untapped</h3>
-                    <p>DeFi is 99% crypto. These users have never traded securities on-chain. Be the first to offer it.</p>
+                    <h3>Manual Reconciliation Hell</h3>
+                    <p>End-of-day reconciliation across brokers, venues, and counterparties. Hours of ops work. Still breaks sometimes.</p>
                 </div>
-                <div class="problem-card">
-                    <div class="problem-icon">💸</div>
-                    <h3>Your Competitors Are Coming</h3>
-                    <p>Robinhood, eToro, Interactive Brokers — all exploring blockchain. Move first or play catch-up.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">⚙️</div>
-                    <h3>Building Is Expensive</h3>
-                    <p>Blockchain infra, custody, compliance, smart contracts — 18+ months and $5M+ to build in-house.</p>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 60px;">
+                <h3 style="text-align: center; margin-bottom: 32px; font-size: 1.75rem;">The Real Cost</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: center;">
+                    <div>
+                        <div class="stat-huge gradient-text">$50B+</div>
+                        <p style="font-size: 1.25rem;">Capital locked in settlement reserves</p>
+                    </div>
+                    <div>
+                        <div class="stat-huge gradient-text">2-5%</div>
+                        <p style="font-size: 1.25rem;">Settlement failure rate in volatile markets</p>
+                    </div>
+                    <div>
+                        <div class="stat-huge gradient-text">$2M+</div>
+                        <p style="font-size: 1.25rem;">Annual ops cost for mid-size broker</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Who Is This For -->
+    <!-- Who We Partner With -->
     <section class="solutions-section">
         <div class="container">
             <h2 class="section-title">Who We Partner With</h2>
+            <p class="section-subtitle">We're building the netting network for modern finance</p>
             <div class="client-types">
+                <div class="client-card featured">
+                    <div class="client-icon">🔄</div>
+                    <h3>Crypto Exchanges</h3>
+                    <p><strong>Settle PnL between market makers, LPs, and the exchange instantly.</strong> No more waiting for wire transfers. Cross-exchange netting for better capital efficiency.</p>
+                </div>
                 <div class="client-card featured">
                     <div class="client-icon">📈</div>
                     <h3>CFD Brokers</h3>
-                    <p>Offer on-chain CFDs. Tap crypto-native traders who want leveraged exposure to securities.</p>
-                </div>
-                <div class="client-card">
-                    <div class="client-icon">🔄</div>
-                    <h3>Crypto Exchanges</h3>
-                    <p>Add tokenized securities. Diversify beyond crypto. Same infrastructure, new products.</p>
+                    <p><strong>Real-time margin settlement reduces counterparty exposure.</strong> Instant margin calls. Automated position netting. Lower capital requirements.</p>
                 </div>
                 <div class="client-card">
                     <div class="client-icon">🏦</div>
                     <h3>Prime Brokers</h3>
-                    <p>Cross-platform netting. Free trapped capital. 24/7 settlement with counterparties.</p>
+                    <p><strong>Cross-venue netting optimizes capital allocation.</strong> Consolidate positions across multiple venues. 5x capital efficiency from network effects.</p>
                 </div>
                 <div class="client-card">
-                    <div class="client-icon">🌐</div>
-                    <h3>Neo-Brokers</h3>
-                    <p>Differentiate with instant settlement. Attract the next generation of traders.</p>
+                    <div class="client-icon">🤝</div>
+                    <h3>OTC Desks</h3>
+                    <p><strong>Atomic bilateral settlement eliminates credit risk.</strong> Trade with anyone, settle instantly. No escrow, no waiting, no counterparty risk.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What Anduin Does -->
+    <!-- How It Works -->
     <section class="how-it-works" id="solution">
         <div class="container">
-            <h2 class="section-title">What Anduin Does For You</h2>
+            <h2 class="section-title">How Instant Settlement Works</h2>
+            <p class="section-subtitle">Four steps. Seconds instead of days.</p>
+            
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <h3>Trade Executes</h3>
+                    <p>Your platform matches the trade. Order filled. Normal workflow.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <h3>PnL Calculated</h3>
+                    <p>Anduin calculates net position and verifies with both sides. Fully auditable.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <h3>Settle On-Chain</h3>
+                    <p>Funds move atomically via smart contract. T+0, no intermediaries, no delays.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-number">4</div>
+                    <h3>Netting Applied</h3>
+                    <p>Positions net across counterparties. Only the net amount moves. Capital efficiency multiplied.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 60px;">
+                <h3 style="text-align: center; margin-bottom: 24px;">The Network Effect Moat</h3>
+                <p style="text-align: center; font-size: 1.125rem; max-width: 800px; margin: 0 auto;">
+                    The more brokers join, the more positions can be netted. If you have opposing positions with two different brokers on Anduin, we net them — freeing up capital for everyone. <strong>This is why early movers win.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="solutions-section" style="background: var(--dark-light);">
+        <div class="container">
+            <h2 class="section-title">Three Products. One Platform.</h2>
+            <p class="section-subtitle">Settlement is the core. Lending and Issuance multiply your revenue.</p>
+            
             <div class="value-grid">
-                <div class="value-card">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🌊</div>
-                    <h3>New Customer Channel</h3>
-                    <p>Access 60M on-chain users without building DeFi infrastructure. They trade with you, settle on-chain.</p>
-                </div>
-                <div class="value-card">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">📊</div>
-                    <h3>Higher Trading Volume</h3>
-                    <p>Capital efficiency means traders can do more with less. More volume = more fees for you.</p>
-                </div>
-                <div class="value-card">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🏆</div>
-                    <h3>First-Mover Advantage</h3>
-                    <p>Be the first to offer securities trading on DeFi rails. Lock in market share before competitors.</p>
-                </div>
-                <div class="value-card">
+                <div class="value-card" style="border: 3px solid var(--primary); transform: scale(1.05);">
+                    <div style="background: var(--primary); color: white; padding: 8px; border-radius: 8px; font-weight: 600; margin-bottom: 16px;">CORE PRODUCT</div>
                     <div style="font-size: 3rem; margin-bottom: 16px;">⚡</div>
-                    <h3>Instant Settlement</h3>
-                    <p>T+0 instead of T+2. Reduce counterparty risk. Free up capital faster. Lower ops costs.</p>
+                    <h3>Anduin Settlement</h3>
+                    <p><strong>Instant on-chain PnL settlement.</strong> No more T+2. Real-time margin calls. Cross-broker netting reduces capital requirements by 5x. This is the foundation.</p>
+                    <p style="color: var(--text-muted); margin-top: 12px; font-size: 0.9rem;">Now onboarding partners</p>
                 </div>
-                <div class="value-card">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🔗</div>
-                    <h3>Cross-Platform Netting</h3>
-                    <p>Net positions across multiple counterparties. 5-10x capital efficiency. Same exposure, less margin.</p>
+                
+                <div class="value-card" style="border: 2px solid var(--primary);">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">💰</div>
+                    <h3>Anduin Lending</h3>
+                    <p><strong>In-app margin lending.</strong> 10x leverage on spot without MIFID complexity. Externalize balance sheet risk. Users get leverage, you get fees, we take the risk.</p>
+                    <p style="color: var(--accent); margin-top: 12px; font-size: 0.9rem;">✓ Live with top-10 fintech</p>
                 </div>
-                <div class="value-card">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🛡️</div>
-                    <h3>Compliance Built-In</h3>
-                    <p>ERC-3643 compliant tokens. KYC/AML integration. Regulatory-ready from day one.</p>
+                
+                <div class="value-card" style="border: 2px solid var(--primary);">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📊</div>
+                    <h3>Anduin Issuance</h3>
+                    <p><strong>Tokenize any asset as a structured product.</strong> Delta-one trackers, yield notes, securitized perps. On-demand when users withdraw to wallet.</p>
+                    <p style="color: var(--accent); margin-top: 12px; font-size: 0.9rem;">✓ Live with 3 major exchanges</p>
                 </div>
             </div>
         </div>
@@ -242,119 +309,164 @@
     <!-- ROI Section -->
     <section class="roi-section" id="roi">
         <div class="container">
-            <h2 class="section-title">The Business Case</h2>
-            <p class="section-subtitle">Conservative estimates for a mid-size broker</p>
+            <h2 class="section-title">Free Up $10M+ in Locked Capital</h2>
+            <p class="section-subtitle">Conservative estimates for a mid-size broker or exchange</p>
             
             <div class="roi-calc">
                 <div class="roi-input">
-                    <h3 style="margin-bottom: 24px;">Your Investment</h3>
+                    <h3 style="margin-bottom: 24px;">Before Anduin</h3>
                     <div class="roi-line">
-                        <span>Integration cost</span>
-                        <span>$50,000</span>
+                        <span>Settlement reserves</span>
+                        <span style="color: #ff4444;">$15M locked</span>
                     </div>
                     <div class="roi-line">
-                        <span>Monthly platform fee</span>
-                        <span>$5,000</span>
+                        <span>Settlement delays</span>
+                        <span style="color: #ff4444;">T+2 to T+5</span>
                     </div>
                     <div class="roi-line">
-                        <span>Settlement fees</span>
-                        <span>1-5 bps per trade</span>
+                        <span>Counterparty risk</span>
+                        <span style="color: #ff4444;">Constant monitoring</span>
                     </div>
-                    <div class="roi-line" style="border-bottom: none; font-weight: 600;">
-                        <span>Year 1 total cost</span>
-                        <span>~$120,000</span>
+                    <div class="roi-line">
+                        <span>Ops cost (reconciliation)</span>
+                        <span style="color: #ff4444;">$2M+/year</span>
+                    </div>
+                    <div class="roi-line" style="border-bottom: none;">
+                        <span>Settlement failures</span>
+                        <span style="color: #ff4444;">2-5% in volatility</span>
                     </div>
                 </div>
                 <div class="roi-output">
-                    <h3 style="margin-bottom: 24px;">Your Return</h3>
+                    <h3 style="margin-bottom: 24px;">With Anduin</h3>
                     <div class="roi-line">
-                        <span>New on-chain customers</span>
-                        <span style="color: var(--accent);">+5,000</span>
+                        <span>Capital freed (5x netting)</span>
+                        <span style="color: var(--accent);">$10M+</span>
                     </div>
                     <div class="roi-line">
-                        <span>Additional trading volume</span>
-                        <span style="color: var(--accent);">+$500M/year</span>
+                        <span>Settlement time</span>
+                        <span style="color: var(--accent);">T+0 (seconds)</span>
                     </div>
                     <div class="roi-line">
-                        <span>Capital freed (netting)</span>
-                        <span style="color: var(--accent);">$10M</span>
+                        <span>Counterparty risk</span>
+                        <span style="color: var(--accent);">Eliminated</span>
                     </div>
                     <div class="roi-line">
-                        <span>New revenue</span>
-                        <span class="roi-result">+$2-5M</span>
+                        <span>Ops cost savings</span>
+                        <span style="color: var(--accent);">~$1.5M/year</span>
+                    </div>
+                    <div class="roi-line" style="border-bottom: none;">
+                        <span>New netting revenue</span>
+                        <span class="roi-result">+$500K+/year</span>
                     </div>
                 </div>
             </div>
             
-            <p style="text-align: center; margin-top: 40px; color: var(--text-muted);">
-                ROI typically exceeds 10x in the first year. We only win when you win.
-            </p>
+            <div style="margin-top: 60px; text-align: center;">
+                <h3 style="margin-bottom: 24px; font-size: 1.75rem;">What You Can Do With That Capital</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto;">
+                    <div style="background: var(--dark); padding: 32px; border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: 16px;">📈</div>
+                        <h4>Expand Trading Pairs</h4>
+                        <p>Use freed capital to offer more markets and products</p>
+                    </div>
+                    <div style="background: var(--dark); padding: 32px; border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: 16px;">🚀</div>
+                        <h4>Increase Leverage</h4>
+                        <p>Offer higher leverage to users without additional capital</p>
+                    </div>
+                    <div style="background: var(--dark); padding: 32px; border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: 16px;">💵</div>
+                        <h4>Lower Fees</h4>
+                        <p>Undercut competitors with lower margin requirements</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- How We Work Together -->
+    <!-- Integration -->
     <section class="solutions-section">
         <div class="container">
-            <h2 class="section-title">How We Work Together</h2>
+            <h2 class="section-title">Integration in Weeks, Not Months</h2>
             <div class="pillars">
                 <div class="pillar">
                     <div class="pillar-number">01</div>
-                    <h3>Integration</h3>
-                    <p>We connect to your existing systems via API. No major infrastructure changes. Live in 4-8 weeks.</p>
+                    <h3>Connect Your Systems</h3>
+                    <p>Single API integration. We connect to your existing order flow and position management. No major infrastructure changes.</p>
                     <ul class="pillar-features">
-                        <li>REST API integration</li>
-                        <li>Your existing order flow</li>
+                        <li>REST + WebSocket API</li>
+                        <li>Your existing workflows</li>
                         <li>White-label settlement</li>
-                        <li>Technical support included</li>
+                        <li>4-6 week integration timeline</li>
                     </ul>
                 </div>
                 <div class="pillar featured">
-                    <div class="pillar-badge">Core Value</div>
+                    <div class="pillar-badge">Network Effects</div>
                     <div class="pillar-number">02</div>
-                    <h3>Go-To-Market</h3>
-                    <p>We help you reach on-chain users. Co-marketing, DeFi community access, launch support.</p>
+                    <h3>Join The Netting Network</h3>
+                    <p>The more brokers on Anduin, the more capital everyone saves. Early movers get maximum netting benefit.</p>
                     <ul class="pillar-features">
-                        <li>DeFi community intros</li>
-                        <li>On-chain distribution</li>
-                        <li>Co-branded campaigns</li>
-                        <li>Product positioning</li>
+                        <li>Cross-broker position netting</li>
+                        <li>Real-time capital optimization</li>
+                        <li>Network grows with each partner</li>
+                        <li>Competitive moat for early joiners</li>
                     </ul>
                 </div>
                 <div class="pillar">
                     <div class="pillar-number">03</div>
-                    <h3>Ongoing Support</h3>
-                    <p>Dedicated partner success team. Quarterly reviews. Continuous optimization.</p>
+                    <h3>Scale With Support</h3>
+                    <p>Dedicated partner success team. We help you optimize netting, expand products, and maximize ROI.</p>
                     <ul class="pillar-features">
                         <li>Dedicated account manager</li>
-                        <li>Performance dashboards</li>
-                        <li>Regulatory updates</li>
-                        <li>New feature access</li>
+                        <li>Real-time netting analytics</li>
+                        <li>Quarterly business reviews</li>
+                        <li>New product early access</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof / Coming Soon -->
-    <section class="tech-section">
+    <!-- Social Proof -->
+    <section class="tech-section" style="background: linear-gradient(180deg, var(--dark-light) 0%, var(--dark) 100%);">
         <div class="container">
-            <h2 class="section-title">Built on Proven Infrastructure</h2>
+            <h2 class="section-title">Trusted Infrastructure</h2>
+            <p class="section-subtitle" style="margin-bottom: 40px;">From top-10 fintechs to global crypto exchanges</p>
+            <div class="stat-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 60px;">
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">4+</div>
+                    <div class="stat-label">Live Integrations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">$B+</div>
+                    <div class="stat-label">Trading Volume Enabled</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">10+</div>
+                    <div class="stat-label">Pipeline Partners</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="font-size: 3rem;">99.9%</div>
+                    <div class="stat-label">Settlement Success Rate</div>
+                </div>
+            </div>
+            <h3 style="text-align: center; margin-bottom: 32px; color: var(--text-muted);">Built on Battle-Tested Infrastructure</h3>
             <div class="tech-grid">
                 <div class="tech-item">
                     <div class="tech-logo">Base L2</div>
-                    <p>Coinbase's L2 chain</p>
+                    <p>Coinbase's L2 — low fees, high throughput</p>
                 </div>
                 <div class="tech-item">
                     <div class="tech-logo">USDC</div>
-                    <p>Circle-backed stablecoin</p>
+                    <p>Circle-backed stablecoin settlement</p>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-logo">ERC-3643</div>
-                    <p>Compliant security tokens</p>
+                    <div class="tech-logo">Smart Contracts</div>
+                    <p>Audited by leading security firms</p>
                 </div>
                 <div class="tech-item">
                     <div class="tech-logo">Chainlink</div>
-                    <p>Enterprise-grade oracles</p>
+                    <p>Enterprise-grade price oracles</p>
                 </div>
             </div>
         </div>
@@ -364,11 +476,11 @@
     <section class="cta-section" id="contact">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Capture On-Chain Volume?</h2>
-                <p>Let's discuss how Anduin can unlock new revenue for your exchange.</p>
+                <h2>Ready to Free Up Capital?</h2>
+                <p>Let's calculate exactly how much capital Anduin can unlock for your platform.</p>
                 <div class="cta-form">
                     <input type="email" placeholder="your@email.com" class="cta-input">
-                    <button class="btn btn-primary btn-large">Schedule Call</button>
+                    <button class="btn btn-primary btn-large">Schedule Partnership Call</button>
                 </div>
                 <p class="cta-note">Or email partnerships directly: <a href="mailto:partners@anduin.io">partners@anduin.io</a></p>
             </div>
@@ -381,14 +493,21 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <img src="assets/logos/anduin-combined.svg" alt="Anduin" height="32">
-                    <p>Connecting traditional finance to on-chain liquidity.</p>
+                    <p>Instant PnL settlement infrastructure for modern finance.</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-col">
                         <h4>Solutions</h4>
+                        <a href="#">For Crypto Exchanges</a>
                         <a href="#">For CFD Brokers</a>
-                        <a href="#">For Exchanges</a>
                         <a href="#">For Prime Brokers</a>
+                        <a href="#">For OTC Desks</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Products</h4>
+                        <a href="#">Anduin Settlement</a>
+                        <a href="#">Anduin Lending</a>
+                        <a href="#">Anduin Issuance</a>
                     </div>
                     <div class="footer-col">
                         <h4>Company</h4>
@@ -405,7 +524,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Anduin. All rights reserved.</p>
+                <p>&copy; 2026 Anduin. All rights reserved.</p>
             </div>
         </div>
     </footer>

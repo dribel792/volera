@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anduin | Instant Settlement for Digital Securities</title>
+    <title>Anduin | Instant PnL Settlement Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -16,10 +16,10 @@
                 <img src="assets/logos/anduin-combined.svg" alt="Anduin" height="36">
             </a>
             <div class="nav-links">
-                <a href="#solutions">Solutions</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#benefits">Benefits</a>
-                <a href="#contact" class="btn btn-primary">Get Started</a>
+                <a href="#market">Market</a>
+                <a href="#solution">Solution</a>
+                <a href="#traction">Traction</a>
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
             </div>
         </div>
     </nav>
@@ -28,288 +28,238 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">Institutional-Grade Infrastructure</div>
-                <h1>Instant Settlement.<br>Cross-Platform Margin.<br><span class="gradient-text">Zero Counterparty Risk.</span></h1>
+                <div class="hero-badge">Institutional Settlement Infrastructure</div>
+                <h1>Instant PnL Settlement.<br>Cross-Broker Netting.<br><span class="gradient-text">Zero Counterparty Risk.</span></h1>
                 <p class="hero-subtitle">
-                    The rails for tokenized securities and structured products. 
-                    Settle trades in seconds, not days. Unlock capital across platforms.
+                    The settlement layer for modern finance. 
+                    Trades settle on-chain in seconds. Capital efficiency multiplies through network effects.
                 </p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary btn-large">Schedule Demo</a>
-                    <a href="#how-it-works" class="btn btn-secondary btn-large">See How It Works</a>
+                    <a href="#contact" class="btn btn-primary btn-large">Schedule Meeting</a>
+                    <a href="#market" class="btn btn-secondary btn-large">See the Opportunity</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-value">T+0</span>
-                        <span class="stat-label">Settlement</span>
+                        <span class="stat-label">Settlement, not T+2</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">5x</span>
+                        <span class="stat-label">Capital efficiency via netting</span>
                     </div>
                     <div class="stat">
                         <span class="stat-value">24/7</span>
-                        <span class="stat-label">Operations</span>
+                        <span class="stat-label">Always-on infrastructure</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value">100%</span>
-                        <span class="stat-label">Collateralized</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="flow-diagram">
-                    <div class="flow-node broker">Broker A</div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-node anduin">Anduin</div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-node broker">Broker B</div>
-                    <div class="flow-label">Instant atomic settlement</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section class="problem-section" id="problem">
+    <!-- Market Section -->
+    <section class="problem-section" id="market">
         <div class="container">
-            <h2 class="section-title">The Problem with Traditional Settlement</h2>
+            <h2 class="section-title">A $50B+ Problem in Plain Sight</h2>
+            <p class="section-subtitle">Settlement delays lock up billions in capital that could be working</p>
             <div class="problems-grid">
                 <div class="problem-card">
-                    <div class="problem-icon">⏱️</div>
-                    <h3>T+2 Settlement</h3>
-                    <p>Capital locked for 2 days. Opportunity cost compounds. Counterparty risk accumulates.</p>
+                    <div class="problem-icon">💰</div>
+                    <h3>$50B+ Locked in Reserves</h3>
+                    <p>Brokers and exchanges hold massive reserves to cover T+2 settlement risk. That capital sits idle instead of generating returns.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">🔒</div>
-                    <h3>Trapped Margin</h3>
-                    <p>Each platform holds separate margin. $10M across 5 brokers = $50M locked capital.</p>
+                    <div class="problem-icon">📈</div>
+                    <h3>Growing Trading Volume</h3>
+                    <p>Crypto trading volume exceeds $100B daily. More volume = more capital locked. The problem only scales with the market.</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-icon">⚠️</div>
-                    <h3>Settlement Risk</h3>
-                    <p>Counterparty defaults between trade and settlement. FTX. SVB. The list grows.</p>
+                    <h3>Systemic Counterparty Risk</h3>
+                    <p>Every trade creates 2+ days of exposure. FTX, SVB, Celsius — counterparty failures cascade across the industry.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">🌙</div>
-                    <h3>Market Hours</h3>
-                    <p>Markets close. Banks close. Your risk doesn't. Global events happen 24/7.</p>
+                    <div class="problem-icon">🔧</div>
+                    <h3>Manual Ops at Scale</h3>
+                    <p>End-of-day reconciliation across venues. Settlement failures. Margin calls. Billions of dollars managed by spreadsheets and humans.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solutions Section -->
-    <section class="solutions-section" id="solutions">
+    <!-- Solution Section -->
+    <section class="solutions-section" id="solution">
         <div class="container">
-            <h2 class="section-title">Three Pillars of Anduin</h2>
+            <h2 class="section-title">On-Chain Settlement Changes the Economics</h2>
+            <p class="section-subtitle">Instant settlement + cross-broker netting = 5x capital efficiency</p>
             <div class="pillars">
-                <div class="pillar">
+                <div class="pillar featured">
+                    <div class="pillar-badge">Network Effect Moat</div>
                     <div class="pillar-number">01</div>
-                    <h3>Tokenized Securities</h3>
-                    <p>Issue and trade digital securities on-chain. Full regulatory compliance with instant transferability.</p>
+                    <h3>Cross-Broker Netting</h3>
+                    <p>The more brokers join Anduin, the more positions can be netted — freeing up capital for everyone. Early partners get maximum benefit.</p>
                     <ul class="pillar-features">
-                        <li>Equity tokens</li>
-                        <li>Structured products</li>
-                        <li>Security token custody</li>
-                        <li>Corporate actions automation</li>
+                        <li>Opposing positions net automatically</li>
+                        <li>Only net amounts settle</li>
+                        <li>5x capital efficiency from day one</li>
+                        <li>Multiplies as network grows</li>
                     </ul>
                 </div>
-                <div class="pillar featured">
-                    <div class="pillar-badge">Core Product</div>
+                <div class="pillar">
                     <div class="pillar-number">02</div>
                     <h3>Instant Settlement</h3>
-                    <p>Atomic DVP (Delivery vs Payment). Token and cash move simultaneously. No settlement risk.</p>
+                    <p>Trades settle on-chain in seconds. No intermediaries, no delays, no counterparty risk. Atomic execution means settlement is guaranteed.</p>
                     <ul class="pillar-features">
-                        <li>T+0 finality</li>
-                        <li>Cross-platform PnL netting</li>
-                        <li>USDC/EURC settlement</li>
-                        <li>On-chain proof of settlement</li>
+                        <li>T+0 settlement (seconds, not days)</li>
+                        <li>Smart contract escrow</li>
+                        <li>99.9% settlement success rate</li>
+                        <li>24/7 always-on infrastructure</li>
                     </ul>
                 </div>
                 <div class="pillar">
                     <div class="pillar-number">03</div>
-                    <h3>Cross-Platform Margin</h3>
-                    <p>One margin pool across all connected platforms. Net positions. Free capital.</p>
+                    <h3>Real-Time Risk Management</h3>
+                    <p>Instant margin calls. Automated position tracking. Transparent on-chain audit trail. Risk is managed in real-time, not end-of-day.</p>
                     <ul class="pillar-features">
-                        <li>Unified margin account</li>
-                        <li>Real-time netting</li>
-                        <li>Capital efficiency 5-10x</li>
-                        <li>Multi-broker connectivity</li>
+                        <li>Real-time margin monitoring</li>
+                        <li>Instant liquidation when needed</li>
+                        <li>Full audit trail on-chain</li>
+                        <li>Regulatory-ready compliance</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
+    <!-- Products -->
+    <section class="how-it-works" style="background: var(--dark-light);">
         <div class="container">
-            <h2 class="section-title">How Instant Settlement Works</h2>
-            <div class="flow-steps">
-                <div class="flow-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Trade Execution</h3>
-                        <p>Broker executes trade on any connected venue. Trade data sent to Anduin.</p>
+            <h2 class="section-title">Three Products. One Platform.</h2>
+            <p class="section-subtitle">Settlement is the foundation. Lending and Issuance multiply the revenue.</p>
+            <div class="process-grid">
+                <div class="process-card featured" style="border: 3px solid var(--primary); transform: scale(1.05);">
+                    <div style="background: var(--primary); color: white; padding: 8px; border-radius: 8px; font-weight: 600; margin-bottom: 16px;">CORE PRODUCT</div>
+                    <div class="process-number">⚡</div>
+                    <h3>Anduin Settlement</h3>
+                    <p>Instant on-chain PnL settlement. No more T+2. Real-time margin calls. Cross-broker netting reduces capital requirements by 5x. This is the infrastructure layer.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">💰</div>
+                    <h3>Anduin Lending</h3>
+                    <p>In-app margin lending. 10x leverage on spot without MIFID complexity. Externalize balance sheet risk. Partners get fees, we take the risk.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">📊</div>
+                    <h3>Anduin Issuance</h3>
+                    <p>Tokenize any asset as a structured product. Delta-one trackers, yield notes, securitized perps. On-demand tokenization when users withdraw to wallet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traction -->
+    <section class="tech-section" id="traction">
+        <div class="container">
+            <h2 class="section-title">Traction & Momentum</h2>
+            <p class="section-subtitle">Live with top-tier platforms. Growing network effect.</p>
+            <div class="stat-grid">
+                <div class="stat">
+                    <div class="stat-value">4+</div>
+                    <div class="stat-label">Live integrations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">$B+</div>
+                    <div class="stat-label">Trading volume enabled</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Partners in pipeline</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <h3 style="text-align: center; margin-bottom: 32px; font-size: 1.75rem;">Partner Types</h3>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-logo">Crypto Exchanges</div>
+                        <p>Settle PnL between market makers and LPs</p>
                     </div>
-                    <div class="step-visual">
-                        <div class="mini-flow">
-                            <span class="mf-node">Trade</span>
-                            <span class="mf-arrow">→</span>
-                            <span class="mf-node highlight">Anduin</span>
-                        </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">CFD Brokers</div>
+                        <p>Real-time margin settlement</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">Prime Brokers</div>
+                        <p>Cross-venue netting</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">OTC Desks</div>
+                        <p>Atomic bilateral settlement</p>
                     </div>
                 </div>
-                <div class="flow-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Position Netting</h3>
-                        <p>Anduin calculates net positions across all brokers. Only net amounts settle.</p>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <h3 style="text-align: center; margin-bottom: 32px; font-size: 1.75rem;">Infrastructure Stack</h3>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-logo">Base L2</div>
+                        <p>Coinbase's L2 — low fees, high throughput</p>
                     </div>
-                    <div class="step-visual">
-                        <div class="netting-example">
-                            <div class="net-row"><span>Broker A owes</span><span>+$50K</span></div>
-                            <div class="net-row"><span>Broker B owes</span><span>-$30K</span></div>
-                            <div class="net-row total"><span>Net settlement</span><span>$20K</span></div>
-                        </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">USDC</div>
+                        <p>Circle-backed settlement token</p>
                     </div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Atomic Settlement</h3>
-                        <p>Smart contract executes DVP. Token delivery and payment happen in same transaction.</p>
+                    <div class="tech-item">
+                        <div class="tech-logo">Smart Contracts</div>
+                        <p>Audited by leading security firms</p>
                     </div>
-                    <div class="step-visual">
-                        <div class="atomic-visual">
-                            <div class="av-side">Token →</div>
-                            <div class="av-center">⚡</div>
-                            <div class="av-side">← USDC</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Finality</h3>
-                        <p>On-chain confirmation. Irrevocable. Auditable. Done in seconds.</p>
-                    </div>
-                    <div class="step-visual">
-                        <div class="finality-badge">
-                            ✓ Settled on Base L2
-                        </div>
+                    <div class="tech-item">
+                        <div class="tech-logo">Chainlink</div>
+                        <p>Enterprise-grade price oracles</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DVP Flow Section -->
-    <section class="dvp-section">
+    <!-- Why Now -->
+    <section class="solutions-section">
         <div class="container">
-            <h2 class="section-title">Delivery vs Payment (DVP)</h2>
-            <p class="section-subtitle">Atomic swap of securities and cash. Both legs settle or neither does.</p>
-            
-            <div class="dvp-diagram">
-                <div class="dvp-party seller">
-                    <h4>Seller</h4>
-                    <div class="dvp-asset">Security Token</div>
+            <h2 class="section-title">Why Now?</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🌊</div>
+                    <h3>Crypto Volumes Are Massive</h3>
+                    <p>$100B+ daily trading volume. Settlement infrastructure is the bottleneck preventing institutional scale.</p>
                 </div>
-                <div class="dvp-center">
-                    <div class="dvp-contract">
-                        <span>Anduin Smart Contract</span>
-                        <div class="dvp-arrows">
-                            <div class="dvp-arrow up">Token →</div>
-                            <div class="dvp-arrow down">← USDC</div>
-                        </div>
-                    </div>
-                    <div class="dvp-status">Atomic Execution</div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚡</div>
+                    <h3>Technology Is Ready</h3>
+                    <p>Base L2 makes on-chain settlement economically viable. $0.01 per trade vs. $50+ for Ethereum mainnet.</p>
                 </div>
-                <div class="dvp-party buyer">
-                    <h4>Buyer</h4>
-                    <div class="dvp-asset">USDC</div>
+                <div class="problem-card">
+                    <div class="problem-icon">📈</div>
+                    <h3>Regulatory Clarity Emerging</h3>
+                    <p>EU frameworks (MiCA), tokenized securities going live (Ondo, Securitize). Compliance is becoming standardized.</p>
                 </div>
-            </div>
-            
-            <div class="dvp-benefits">
-                <div class="dvp-benefit">
-                    <span class="benefit-icon">🔐</span>
-                    <span>Zero counterparty risk</span>
-                </div>
-                <div class="dvp-benefit">
-                    <span class="benefit-icon">⚡</span>
-                    <span>Seconds, not days</span>
-                </div>
-                <div class="dvp-benefit">
-                    <span class="benefit-icon">📜</span>
-                    <span>Immutable audit trail</span>
+                <div class="problem-card">
+                    <div class="problem-icon">💥</div>
+                    <h3>Market Pain Is Real</h3>
+                    <p>FTX, Celsius, SVB — counterparty risk is top of mind. Brokers are actively looking for solutions.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits-section" id="benefits">
-        <div class="container">
-            <h2 class="section-title">Why Institutions Choose Anduin</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-metric">5-10x</div>
-                    <h3>Capital Efficiency</h3>
-                    <p>Cross-platform netting frees trapped margin. Same exposure, fraction of the capital.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-metric">$0</div>
-                    <h3>Settlement Risk</h3>
-                    <p>Atomic DVP eliminates counterparty exposure. No more pray-and-wait.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-metric">24/7</div>
-                    <h3>Always On</h3>
-                    <p>Blockchain doesn't sleep. Settle trades any time, any day.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-metric">100%</div>
-                    <h3>Transparency</h3>
-                    <p>On-chain settlement. Real-time proof of reserves. Auditable by design.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech Stack Section -->
-    <section class="tech-section">
-        <div class="container">
-            <h2 class="section-title">Built on Proven Infrastructure</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <div class="tech-logo">Base L2</div>
-                    <p>Ethereum security, low fees</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-logo">USDC</div>
-                    <p>Circle-backed stablecoin</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-logo">ERC-3643</div>
-                    <p>Compliant security tokens</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-logo">Chainlink</div>
-                    <p>Oracle price feeds</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
+    <!-- The Ask -->
     <section class="cta-section" id="contact">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Modernize Your Settlement?</h2>
-                <p>Join the institutions already settling instantly with Anduin.</p>
-                <div class="cta-form">
-                    <input type="email" placeholder="your@email.com" class="cta-input">
-                    <button class="btn btn-primary btn-large">Request Demo</button>
+                <h2>Building the Settlement Layer for Modern Finance</h2>
+                <p>We're raising to accelerate partner integrations and expand the netting network.</p>
+                <div style="margin-top: 40px;">
+                    <a href="mailto:investors@anduin.io" class="btn btn-primary btn-large">investors@anduin.io</a>
                 </div>
-                <p class="cta-note">Or email us directly: <a href="mailto:hello@anduin.io">hello@anduin.io</a></p>
             </div>
         </div>
     </section>
@@ -320,14 +270,21 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <img src="assets/logos/anduin-combined.svg" alt="Anduin" height="32">
-                    <p>Instant settlement infrastructure for digital securities.</p>
+                    <p>Instant PnL settlement infrastructure for modern finance.</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-col">
-                        <h4>Product</h4>
-                        <a href="#solutions">Solutions</a>
-                        <a href="#how-it-works">How It Works</a>
-                        <a href="#">Documentation</a>
+                        <h4>Solutions</h4>
+                        <a href="#">For Crypto Exchanges</a>
+                        <a href="#">For CFD Brokers</a>
+                        <a href="#">For Prime Brokers</a>
+                        <a href="#">For OTC Desks</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Products</h4>
+                        <a href="#">Anduin Settlement</a>
+                        <a href="#">Anduin Lending</a>
+                        <a href="#">Anduin Issuance</a>
                     </div>
                     <div class="footer-col">
                         <h4>Company</h4>
@@ -344,7 +301,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Anduin. All rights reserved.</p>
+                <p>&copy; 2026 Anduin. All rights reserved.</p>
             </div>
         </div>
     </footer>
