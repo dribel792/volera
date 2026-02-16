@@ -620,6 +620,286 @@ Add to docs:
 
 ---
 
+---
+
+## V3 ARCHITECTURE — NEW TICKETS
+
+### Epic: V3 Meta-Risk Layer
+
+### VS-V3-001: HubVault Deployment & Testing 🟢
+**Priority:** CRITICAL | **Estimate:** DONE | **Status:** DONE
+
+**Implemented:**
+- ✅ HubVault.sol contract (single global vault, per-user accounting)
+- ✅ IHubVault.sol interface
+- ✅ 60 comprehensive tests (all passing)
+- ✅ Deposit/withdraw (no admin override)
+- ✅ Venue equity updates
+- ✅ Margin locked tracking
+- ✅ Overspend detection
+- ✅ Shortfall processing (waterfall: collateral → insurance → bad debt)
+- ✅ Batch equity updates
+- ✅ Insurance pool management
+- ✅ Governance functions
+- ✅ Event deduplication (processedEvents)
+
+### VS-V3-002: Keeper Service — Equity Engine 🔴
+**Priority:** CRITICAL | **Estimate:** 3 days | **Status:** TODO
+
+**Problem:**
+Need off-chain keeper service to:
+1. Monitor positions across all venues (WebSocket + REST)
+2. Calculate cross-venue equity with haircuts
+3. Update HubVault via updateVenueEquity()
+4. Detect overspend and trigger balance reductions
+5. Process liquidation shortfalls
+
+**Implementation:**
+1. **Position Monitor** (`services/keeper/position-monitor.ts`):
+   - Connect to venue WebSocket feeds
+   - Normalize position data across venues
+   - Store in SQLite: `positions` table
+2. **Equity Engine** (`services/keeper/equity-engine.ts`):
+   - Aggregate positions per user across all venues
+   - Mark-to-market using oracle prices
+   - Calculate per-venue equity with haircuts (default 50%)
+   - Check overspend threshold
+3. **Vault Updater** (`services/keeper/vault-updater.ts`):
+   - Batch updateVenueEquity() calls
+   - Update margin locked via updateMarginLocked()
+   - Process shortfalls via processShortfall()
+4. **Trigger System** (`services/keeper/triggers.ts`):
+   - Price move trigger (>X% move since last update)
+   - Trade event trigger (position opened/closed)
+   - Heartbeat trigger (every 5 minutes)
+   - Manual trigger (API endpoint)
+
+**Files:**
+- New: `services/keeper/position-monitor.ts`
+- New: `services/keeper/equity-engine.ts`
+- New: `services/keeper/vault-updater.ts`
+- New: `services/keeper/triggers.ts`
+- New: `services/keeper/config.ts`
+- Update: HubVault ABI integration
+
+**Depends On:** VS-V3-003 (venue adapter framework)
+
+---
+
+### VS-V3-003: Venue Adapter Framework 🔴
+**Priority:** CRITICAL | **Estimate:** 2 days | **Status:** TODO
+
+**Problem:**
+Need standardized interface for venues to:
+1. Receive balance updates from Anduin
+2. Report positions to Anduin
+3. Freeze/unfreeze user orders
+
+**Implementation:**
+1. **Adapter Interface** (`services/venues/IVenueAdapter.ts`):
+   ```typescript
+   interface IVenueAdapter {
+     // Balance propagation
+     updateUserBalance(userId: string, newBalance: number): Promise<void>
+     
+     // Position reporting
+     getUserPositions(userId: string): Promise<Position[]>
+     subscribeToPositions(userId: string, callback: (pos: Position) => void): void
+     
+     // Order control
+     freezeNewOrders(userId: string): Promise<void>
+     unfreezeNewOrders(userId: string): Promise<void>
+   }
+   ```
+2. **Mock Adapter** (`services/venues/MockVenueAdapter.ts`):
+   - For testing
+   - In-memory position store
+3. **Kraken Adapter** (`services/venues/KrakenAdapter.ts`):
+   - Example real implementation
+   - Uses Kraken REST + WebSocket APIs
+4. **Venue Registry** (`services/venues/registry.ts`):
+   - Load adapters from config
+   - Route calls to correct adapter per venue
+
+**Files:**
+- New: `services/venues/IVenueAdapter.ts`
+- New: `services/venues/MockVenueAdapter.ts`
+- New: `services/venues/KrakenAdapter.ts`
+- New: `services/venues/registry.ts`
+
+---
+
+### VS-V3-004: Update ClearingVault for V3 🟡
+**Priority:** MEDIUM | **Estimate:** 1 day | **Status:** TODO
+
+**Problem:**
+ClearingVault references MarginVault (V2 architecture). Need to simplify for V3.
+
+**Changes:**
+1. Remove `transferToClearing` / `receiveFromClearing` logic
+2. ClearingVault holds venue guarantee deposits only
+3. Settlement flow:
+   - Venues owe each other (tracked in ClearingVault)
+   - Netting computes net obligations
+   - Keeper settles net via HubVault transfers
+4. Update tests
+
+**Files:**
+- Update: `contracts/src/ClearingVault.sol`
+- Update: `contracts/test/ClearingVault.t.sol`
+- Update: `contracts/src/interfaces/IClearingVault.sol`
+
+**Status:** DEFERRED (not critical for testnet demo)
+
+---
+
+### VS-V3-005: Testnet Deployment & Demo 🔴
+**Priority:** CRITICAL | **Estimate:** 1 day | **Status:** Blocked by VS-V3-002
+
+**Goal:**
+Deploy V3 architecture to Base Sepolia testnet and create working demo.
+
+**Steps:**
+1. Deploy HubVault to Base Sepolia
+2. Register 2 mock venues
+3. Deploy keeper service to cloud
+4. Create demo script:
+   - User deposits $50K into HubVault
+   - Keeper propagates $50K to both venues
+   - User opens $40K position on Venue 1
+   - User opens $40K position on Venue 2
+   - Price moves 10%
+   - Keeper recalculates equity with haircuts
+   - Venue balances updated automatically
+5. Record demo video
+
+**Files:**
+- New: `contracts/script/DeployHubVaultV3.s.sol`
+- New: `demo/v3-demo.ts`
+- New: `demo/README.md`
+
+---
+
+### VS-V3-006: Dashboard for V3 (Portfolio View) 🟠
+**Priority:** HIGH | **Estimate:** 2 days | **Status:** TODO
+
+**Problem:**
+Current dashboard shows single-vault view. Need cross-venue portfolio view.
+
+**New Components:**
+1. **Portfolio Summary** — Total collateral, margin used across all venues, available balance
+2. **Venue Breakdown** — Per-venue equity, margin, positions
+3. **Position Aggregation** — Combined view of all positions across venues
+4. **Margin Health Indicator** — Visual alert when approaching overspend threshold
+5. **Insurance Pool Status** — Current balance, coverage ratio
+
+**Files:**
+- New: `services/dashboard/portfolio.html`
+- New: `services/dashboard/js/portfolio.js`
+- Update: `services/api/routes/portfolio.ts` (new API endpoints)
+
+---
+
+### VS-V3-007: Admin Panel for V3 (Risk Management) 🟠
+**Priority:** HIGH | **Estimate:** 1.5 days | **Status:** TODO
+
+**New Admin Features:**
+1. **Venue Management** — Register/remove venues, set max allocations
+2. **Risk Parameters** — Adjust haircut bps, overspend threshold, max venue allocation
+3. **Insurance Pool** — Deposit/withdraw from insurance pool, view coverage ratio
+4. **User Monitoring** — See all users, their collateral, margin locked, health scores
+5. **Keeper Status** — Keeper uptime, last equity update timestamp, pending operations
+
+**Files:**
+- Update: `services/admin/admin.html`
+- Update: `services/admin/js/admin.js`
+- New: `services/api/routes/admin-v3.ts`
+
+---
+
+### VS-V3-008: Integration Tests for V3 Flow 🔴
+**Priority:** CRITICAL | **Estimate:** 1.5 days | **Status:** TODO
+
+**Test Coverage:**
+1. **Happy Path:**
+   - User deposits → keeper propagates → venues show balance
+   - User trades → keeper recalculates → balances updated
+   - User withdraws → keeper propagates → venues reduce balance
+2. **Overspend Scenario:**
+   - User exceeds margin → overspend detected → balances reduced
+3. **Liquidation Scenario:**
+   - Venue liquidates user → shortfall → insurance waterfall
+4. **Multi-User Scenario:**
+   - Multiple users trading across multiple venues
+5. **Keeper Failure Recovery:**
+   - Keeper goes down → equity updates pause → users can still withdraw
+
+**Files:**
+- New: `services/test/v3/integration.test.ts`
+- New: `services/test/v3/overspend.test.ts`
+- New: `services/test/v3/liquidation.test.ts`
+
+---
+
+### VS-V3-009: Documentation Updates 🟡
+**Priority:** MEDIUM | **Estimate:** 0.5 day | **Status:** PARTIAL (PRODUCT.md done)
+
+**Remaining Work:**
+- ✅ PRODUCT.md created
+- ⚪ Update ARCHITECTURE.md to reflect V3 vs V2
+- ⚪ Update README.md with V3 overview
+- ⚪ Add keeper setup guide
+- ⚪ Add venue integration guide
+
+**Files:**
+- Update: `docs/ARCHITECTURE.md`
+- Update: `README.md`
+- New: `docs/KEEPER_SETUP.md`
+- New: `docs/VENUE_INTEGRATION.md`
+
+---
+
+### VS-V3-010: Haircut Calibration & Backtesting 🟡
+**Priority:** MEDIUM | **Estimate:** 2 days | **Status:** TODO
+
+**Problem:**
+Default 50% haircut is arbitrary. Need data-driven calibration.
+
+**Implementation:**
+1. Collect historical price data for BTC, ETH, etc.
+2. Simulate cross-venue positions with different haircut values
+3. Measure insurance fund drawdown vs haircut
+4. Determine optimal haircut per asset class
+5. Add per-asset haircut config to HubVault
+
+**Files:**
+- New: `analysis/haircut-calibration.py`
+- New: `data/historical-prices.csv`
+- Update: `contracts/src/HubVault.sol` (add per-asset haircut mapping)
+
+---
+
+## V2 → V3 Migration Notes
+
+### Superseded V2 Components
+- **MarginVault** (per-venue) → Replaced by **HubVault** (single global)
+- **Broker Bridge** → Replaced by **Keeper Service**
+- **Per-Venue Settlement** → Replaced by **Cross-Venue Equity Engine**
+
+### Still Relevant from V2
+- ✅ UnifiedAccountVault (for single-vault use cases)
+- ✅ SecurityTokenVault (DVP for securities)
+- ✅ ClearingVault (simplified for V3)
+- ✅ OracleGuard (price validation)
+- ✅ TradingHoursGuard (trading window enforcement)
+- ✅ Indexer (event listening)
+- ✅ Recon (balance reconciliation)
+- ✅ API Gateway
+- ✅ Dashboard (needs V3 updates)
+- ✅ Admin Panel (needs V3 updates)
+
+---
+
 ## Immediate Action Items (This Week)
 
 ### Critical Path (Must Do)
