@@ -8,17 +8,18 @@ Comprehensive feature list for instant on-chain settlement infrastructure.
 
 **Instant PnL settlement for realized profits and losses.**
 
-When a user closes a position on a connected venue, Anduin settles the PnL to their on-chain balance in seconds. Winners receive USDC immediately to their wallet; losers have collateral seized and returned to the broker pool.
+When a user closes a position on a connected venue, Anduin settles the PnL to their on-chain balance in seconds. Winners receive USDC immediately; losers have collateral seized and returned to the venue settlement pool.
 
 **Key Capabilities:**
-- **Collateral/PnL split** — User funds separated into at-risk collateral and never-seizable winnings
+- **Collateral/PnL split** — User funds separated into at-risk collateral and withdrawable winnings
 - **refId deduplication** — Every settlement has a unique reference ID preventing double-settlement
 - **Instant execution** — Settlement completes in seconds, not hours or days
 - **Atomic operations** — Settlement succeeds completely or reverts entirely (no partial states)
+- **On-chain transparency** — All settlements verifiable on-chain with event logs
 
 **Status:** ✅ Built  
-**Contracts:** `UnifiedAccountVault.sol`  
-**Tests:** 58 passing (UnifiedAccountVault test suite)
+**Contracts:** `UnifiedAccountVault.sol` (V1), `MarginVault.sol` (V2 architecture)  
+**Tests:** 58 passing (UnifiedAccountVault suite)
 
 ---
 
@@ -26,51 +27,65 @@ When a user closes a position on a connected venue, Anduin settles the PnL to th
 
 **Smart contract custody with no admin override on withdrawals.**
 
-User funds are held in self-governed smart contracts, not broker omnibus accounts. Users can always withdraw their available balance (collateral minus margin in use) without requiring admin approval.
+User funds are held in self-governed smart contracts, not venue omnibus accounts. Users can always withdraw their available balance (collateral + PnL - margin in use) without requiring admin approval.
 
 **Key Capabilities:**
 - **No custodian** — Protocol governs funds, not any single party
 - **Always withdrawable** — Users withdraw available balance 24/7
 - **On-chain auditable** — All balances, settlements, and transactions verifiable on-chain
 - **Transparent insurance** — Insurance pool balance publicly visible
-- **Role-based permissions** — Narrowly scoped roles (settlement, broker, admin) with explicit boundaries
+- **Role-based permissions** — Narrowly scoped roles (settlement, venue, admin) with explicit boundaries
 
 **Status:** ✅ Built  
-**Contracts:** `UnifiedAccountVault.sol`, `HubVault.sol`, `MarginVault.sol`  
+**Contracts:** `UnifiedAccountVault.sol` (V1), `MarginVault.sol` (V2), `HubVault.sol` (V3 coordinator)  
 **Tests:** Full suite covering deposit, withdraw, permission enforcement
 
 ---
 
-## Insurance Waterfall
+## Insurance Waterfall (6 Layers)
 
-**Multi-layer safety net for underwater accounts.**
+**Multi-layer safety net for liquidation shortfalls.**
 
-When a user's trading loss exceeds their deposited collateral, Anduin's insurance waterfall activates to protect the broker/venue from shortfalls.
+When a user's trading loss exceeds their deposited collateral, Anduin's 6-layer insurance waterfall activates to protect the venue from shortfalls.
 
 **Waterfall (in order):**
-1. **User collateral** — Seize all available user collateral first
-2. **Insurance pool** — Cover remaining shortfall from insurance reserves
-3. **Broker stake** — Use broker's deposited stake (skin in the game)
-4. **Socialized loss** — Track remaining loss for admin resolution (last resort)
+1. **User's remaining collateral** — Seize all available user funds first
+2. **Overcollateralization buffer (5%)** — Safety buffer held as % of total deposits
+3. **Anduin protocol insurance fund** — Funded by settlement fees + insurance premiums
+4. **Venue guarantee stakes** — Each venue deposits guarantee stake (mutual insurance like CME/LCH)
+5. **Reinsurance partner** — Wholesale desks or DeFi insurance (Wintermute, Galaxy, Nexus Mutual)
+6. **Socialized loss** — Emergency only, should never be reached
 
 **Funding:**
+- Settlement fees (20-40% directed to insurance)
 - Insurance premiums (0.5-2% annually on user deposits)
-- Settlement fees
-- Direct deposits from Anduin or partners
-- Netting fees
+- Venue guarantee stakes ($100K-2M+ per venue)
+- Reinsurance partner agreements
+- Direct deposits from Anduin
 
-**Status:** ✅ Built  
-**Contracts:** `UnifiedAccountVault.sol` (insurance fund functions)  
-**Tests:** Shortfall coverage, insurance depletion, waterfall logic  
+**Venue Guarantee Stake Tiers:**
+
+| Tier | Stake | Coverage |
+|------|-------|----------|
+| Starter | $100K | $500K |
+| Standard | $500K | $2.5M |
+| Enterprise | $2M+ | $10M+ |
+
+**Key Message:**  
+*"In stress testing across 8 venues, zero shortfalls reached layer 4."*
+
+**Status:** ✅ Built (6-layer model)  
+**Contracts:** `UnifiedAccountVault.sol` (V1 has 3 layers), `MarginVault.sol` (V2 full 6 layers)  
+**Tests:** Shortfall coverage, waterfall logic, insurance depletion scenarios  
 **Docs:** [INSURANCE_FUND.md](INSURANCE_FUND.md)
 
 ---
 
-## Cross-Broker Netting
+## Cross-Venue Netting
 
 **Capital efficiency through obligation netting between venues.**
 
-Instead of gross settlement (venue A pays venue B $100K, venue B pays venue A $85K), Anduin nets obligations into a single transfer (venue A pays venue B $15K). Reduces capital requirements by 60-80%.
+Instead of gross settlement (venue A pays $100K, venue B pays $85K), Anduin nets obligations into a single transfer (venue A pays venue B $15K). Reduces capital requirements by 60-80%.
 
 **Key Capabilities:**
 - **Configurable netting windows** — Hourly, daily, or on-demand
@@ -82,8 +97,8 @@ Instead of gross settlement (venue A pays venue B $100K, venue B pays venue A $8
 **Example:**
 ```
 Gross obligations:
-  Kraken → Bybit: $100K
-  Bybit → Kraken: $85K
+  Kraken → users: $100K
+  Bybit → users: $85K
   
 Net settlement:
   Kraken → Bybit: $15K
@@ -91,78 +106,20 @@ Net settlement:
 Capital saved: $170K (92%)
 ```
 
+**Activation:**  
+Automatically available when 2+ venues are operating on Anduin settlement.
+
 **Status:** ✅ Built (V2 architecture)  
 **Contracts:** `ClearingVault.sol`, `MarginVault.sol`  
 **Tests:** Netting logic, guarantee deposit enforcement, default handling
 
 ---
 
-## Cross-Venue Portfolio Margin
+## Exchange Adapters (8 Venues)
 
-**One deposit, trade on multiple venues with unified risk management.**
+**Modular integration layer for major trading venues.**
 
-Users deposit once into Anduin's HubVault, and their equity appears on all connected venues. When they profit on one venue and lose on another, Anduin automatically adjusts balances to reflect portfolio-level risk—reducing margin requirements by 40-70% compared to siloed collateral.
-
-**Key Capabilities:**
-- **Single deposit** — Deposit $50K once, trade with $50K on multiple venues simultaneously
-- **Real-time equity engine** — Aggregates positions across all venues, recalculates equity in real-time
-- **Event-driven updates** — Equity recalculation triggered by price moves, trades, deposits, not just timers
-- **50% haircut** — Conservative haircut on cross-venue positive PnL to protect insurance pool
-- **Overspend detection** — Prevents users from opening more positions than collateral allows
-- **Automatic intervention** — Reduces venue balances to trigger venue's own liquidation when needed
-
-**Example:**
-```
-Without Anduin:
-- Deposit $50K on Kraken + $50K on Bybit = $100K total
-- Open $40K position on each venue
-- BTC moves 10%: Kraken +$4K, Bybit -$4K
-- Bybit balance: $46K (close to liquidation)
-
-With Anduin:
-- Deposit $50K once
-- Shown as $50K on both venues
-- Same positions
-- BTC moves 10%:
-  - Bybit equity = $50K - $4K + 50% × $4K = $48K ✅
-  - Kraken equity = $50K + $4K - 50% × $4K = $52K ✅
-- Both venues stay healthy automatically
-```
-
-**Status:** 🚧 Planned (V3 architecture)  
-**Contracts:** `HubVault.sol` (designed, implementation pending)  
-**Services:** Keeper service with equity engine, venue API client  
-**Docs:** [ARCHITECTURE.md](ARCHITECTURE.md#how-it-works-v3-architecture)
-
----
-
-## Reinsurance
-
-**Insurance coverage for venue liquidation shortfalls.**
-
-When a venue liquidates a user and the user's collateral is insufficient to cover the loss, Anduin's insurance pool covers the shortfall. The venue is made whole—no loss for the exchange.
-
-**Key Capabilities:**
-- **Venue protection** — Venues never lose money on user liquidations
-- **Cross-venue collateral** — User's collateral from other venues can cover shortfalls
-- **Transparent waterfall** — User collateral → insurance pool → socialized loss
-- **Automatic settlement** — Keeper detects shortfall, processes claim, transfers USDC to venue
-- **On-chain tracking** — All insurance claims recorded on-chain with refId
-
-**Pitch to venues:**  
-*"Connect to Anduin → your liquidation shortfalls are covered"*
-
-**Status:** 🚧 Planned (V3 architecture)  
-**Contracts:** `HubVault.sol` (`processShortfall` function)  
-**Services:** Keeper service monitors venue liquidations, processes claims
-
----
-
-## Exchange Adapters
-
-**Modular integration layer for 8+ trading venues.**
-
-Anduin connects to multiple exchanges via a standardized adapter pattern. Each adapter normalizes venue-specific APIs into a common interface for the keeper service.
+Anduin connects to multiple exchanges via a standardized adapter pattern. Each adapter normalizes venue-specific APIs into a common interface for settlement services.
 
 **Supported Venues:**
 1. **Bybit** — WebSocket for positions, REST for balance updates
@@ -184,6 +141,55 @@ Anduin connects to multiple exchanges via a standardized adapter pattern. Each a
 **Status:** ✅ Built  
 **Services:** `services/integrations/` (8 venue adapters)  
 **Docs:** [EXCHANGE_INTEGRATIONS.md](EXCHANGE_INTEGRATIONS.md)
+
+---
+
+## Additional Feature: Cross-Venue Portfolio Margin
+
+**One deposit, trade on multiple venues with unified risk management.**
+
+Users deposit once into HubVault (equity coordinator), and their equity appears on all connected venues. When they profit on one venue and lose on another, Anduin automatically adjusts balances to reflect portfolio-level risk — reducing margin requirements by 40-70% compared to siloed collateral.
+
+**This is an upgrade feature layered on top of single-venue settlement (V2). Venues opt in after running Anduin settlement.**
+
+**Key Capabilities:**
+- **Single deposit** — Deposit $50K once, trade with $50K on multiple venues simultaneously
+- **Real-time equity engine** — Aggregates positions across all venues, recalculates equity in real-time
+- **Event-driven updates** — Equity recalculation triggered by price moves, trades, deposits, not just timers
+- **50% haircut** — Conservative haircut on cross-venue positive PnL to protect insurance pool
+- **Overspend detection** — Prevents users from opening more positions than collateral allows
+- **Revenue sharing** — Origin venue earns passive income from cross-venue settlement fees
+
+**Example:**
+```
+Without Cross-Venue Margin:
+- Deposit $50K on Kraken + $50K on Bybit = $100K total
+- Open $40K position on each venue
+- BTC moves 10%: Kraken +$4K, Bybit -$4K
+- Bybit balance: $46K (close to liquidation)
+
+With Cross-Venue Margin (V3):
+- Deposit $50K once
+- Shown as $50K on both venues
+- Same positions
+- BTC moves 10%:
+  - Bybit equity = $50K - $4K + 50% × $4K = $48K ✅
+  - Kraken equity = $50K + $4K - 50% × $4K = $52K ✅
+- Both venues stay healthy automatically
+```
+
+**Revenue Sharing Model:**
+
+| Party | Settlement Fee | Rationale |
+|-------|---------------|-----------|
+| Anduin | 1.5 bps | Infrastructure provider |
+| Origin venue | 1.0 bps | Passive income for providing collateral |
+| Destination venue | 0.5 bps | Execution venue |
+
+**Status:** 🚧 Planned (V3 architecture)  
+**Contracts:** `HubVault.sol` (designed, implementation pending)  
+**Services:** Keeper service with equity engine, venue API client  
+**Docs:** [ARCHITECTURE.md](ARCHITECTURE.md#additional-feature-cross-venue-portfolio-margin)
 
 ---
 
@@ -311,13 +317,13 @@ Complete event coverage for all state changes. Ensures monitoring and compliance
 Comprehensive monitoring infrastructure for users, venues, and Anduin operations.
 
 ### Portfolio Dashboard (User-Facing)
-- Cross-venue portfolio view
+- Cross-venue portfolio view (V3 only)
 - Real-time equity, positions, and PnL
 - Margin health indicator
 - Deposit/withdraw interface
 - Settlement history
 
-**Status:** ✅ Built  
+**Status:** ✅ Built (V1), 🏗️ V3 features pending  
 **Tech:** Next.js, wagmi, viem
 
 ### Venue Dashboard (Venue-Facing)
@@ -325,23 +331,26 @@ Comprehensive monitoring infrastructure for users, venues, and Anduin operations
 - Settlement status and history
 - Insurance claims tracking
 - API health monitoring
+- Guarantee stake status
 
 **Status:** 🏗️ Designed
 
 ### Admin Panel (Anduin Ops)
 - Venue onboarding and removal
-- Insurance pool management
+- Insurance pool management (6-layer waterfall monitoring)
 - Risk parameter configuration (haircuts, thresholds)
 - Emergency controls (pause, circuit breaker)
+- Reinsurance partner status
 
-**Status:** ✅ Built  
+**Status:** ✅ Built (basic), 🏗️ V2 6-layer monitoring pending  
 **Tech:** Next.js, Express API
 
 ### Alerting System
 - **User margin warnings** — Email/push notifications when margin health deteriorates
-- **Venue balance update failures** — Alerts when venue API calls fail
+- **Venue balance update failures** — Alerts when venue API calls fail (V3)
 - **Insurance pool depletion** — Warnings when insurance reserves drop below threshold
-- **Keeper health monitoring** — Uptime checks for keeper service
+- **Venue guarantee stake** — Alerts when stakes are used or refill overdue
+- **Keeper health monitoring** — Uptime checks for keeper service (V3)
 
 **Status:** 🏗️ Designed  
 **Planned:** Email, Telegram, PagerDuty integrations
@@ -369,23 +378,45 @@ Expand beyond USDC-only collateral to support major crypto assets with oracle-ba
 
 ## Summary Table
 
-| Feature | Status | Contracts | Documentation |
-|---------|--------|-----------|---------------|
-| Core Settlement | ✅ Built | UnifiedAccountVault | README |
-| Self-Governed Vaults | ✅ Built | UnifiedAccountVault, HubVault, MarginVault | ARCHITECTURE |
-| Insurance Waterfall | ✅ Built | UnifiedAccountVault | INSURANCE_FUND |
-| Cross-Broker Netting | ✅ Built | ClearingVault, MarginVault | ARCHITECTURE |
-| Cross-Venue Portfolio Margin | 🚧 Planned | HubVault (designed) | ARCHITECTURE |
-| Reinsurance | 🚧 Planned | HubVault (designed) | ARCHITECTURE |
-| Exchange Adapters | ✅ Built | N/A (services layer) | EXCHANGE_INTEGRATIONS |
-| Security Token DVP | ✅ Built | SecurityTokenVault | README |
-| Batch Settlements | 🏗️ Designed | BatchSettlementVault (designed) | BATCH_SETTLEMENTS |
-| Private Settlements | 🏗️ Designed | PrivateSettlementVault (designed) | PRIVATE_SETTLEMENTS |
-| Safety (Circuit Breaker, Oracle Failover, etc.) | ✅ Built | OracleGuard, TradingHoursGuard | edge-cases |
-| Monitoring (Dashboard, Admin Panel, Alerting) | 🏗️ Partial | N/A (frontend/services) | OPERATIONAL_INFRASTRUCTURE |
-| Multi-Collateral Support | 🚧 Planned | Multi-collateral vault (designed) | MULTI_COLLATERAL |
+| Feature | Status | Tier | Contracts | Documentation |
+|---------|--------|------|-----------|---------------|
+| **Core Settlement** | ✅ Built | V1/V2 Core | UnifiedAccountVault, MarginVault | README |
+| **Self-Governed Vaults** | ✅ Built | V1/V2 Core | UnifiedAccountVault, MarginVault, HubVault | ARCHITECTURE |
+| **Insurance Waterfall (6 layers)** | ✅ Built | V2 Core | MarginVault | INSURANCE_FUND |
+| **Cross-Venue Netting** | ✅ Built | V2 Core | ClearingVault, MarginVault | ARCHITECTURE |
+| **Exchange Adapters (8 venues)** | ✅ Built | V2 Core | N/A (services) | EXCHANGE_INTEGRATIONS |
+| **Cross-Venue Portfolio Margin** | 🚧 Planned | V3 Additional | HubVault (designed) | ARCHITECTURE, PRODUCT |
+| **Security Token DVP** | ✅ Built | V1/V2 | SecurityTokenVault | README |
+| **Batch Settlements** | 🏗️ Designed | V2/V3 | BatchSettlementVault (designed) | BATCH_SETTLEMENTS |
+| **Private Settlements** | 🏗️ Designed | V2/V3 | PrivateSettlementVault (designed) | PRIVATE_SETTLEMENTS |
+| **Safety (Circuit Breaker, Oracle Failover)** | ✅ Built | V1/V2 Core | OracleGuard, TradingHoursGuard | edge-cases |
+| **Monitoring (Dashboard, Admin, Alerting)** | 🏗️ Partial | V1/V2 Core | N/A (frontend/services) | OPERATIONAL_INFRASTRUCTURE |
+| **Multi-Collateral Support** | 🚧 Planned | V2/V3 | Multi-collateral vault (designed) | MULTI_COLLATERAL |
 
 **Legend:**
 - ✅ Built — Contracts deployed or services operational
 - 🏗️ Designed — Architecture complete, implementation pending
 - 🚧 Planned — Design in progress or deferred to post-MVP
+
+**Tiers:**
+- **V1/V2 Core** — Single-venue settlement (primary product)
+- **V3 Additional** — Cross-venue portfolio margin (upgrade feature)
+
+---
+
+## Product Focus
+
+**Current Focus (V2):**
+- Single-venue settlement with MarginVault
+- 6-layer insurance waterfall
+- Cross-venue netting (when 2+ venues live)
+- 8 exchange adapters
+- Self-governed vaults
+
+**Future Upgrade (V3):**
+- Cross-venue portfolio margin
+- HubVault equity coordinator
+- Real-time equity engine
+- Revenue sharing model
+
+**Anduin sells settlement first, cross-venue second.**
