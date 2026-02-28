@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anduin Logo Concepts - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section-title {
+            color: #334155;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .logo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .logo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .logo-card.dark {
+            background: #1e293b;
+        }
+        .logo-name {
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+        .logo-card.dark .logo-name {
+            color: #94a3b8;
+        }
+        .logo-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .logo-card.dark .logo-display {
+            border-color: #334155;
+        }
+        .logo-display img {
+            max-width: 100%;
+            height: auto;
+        }
+        .icon-display {
+            min-height: 100px;
+        }
+        .favicon-display {
+            min-height: 80px;
+        }
+        .favicon-display img {
+            width: 64px;
+            height: 64px;
+        }
+        .description {
+            margin-top: 15px;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .logo-card.dark .description {
+            color: #94a3b8;
+        }
+        .brand-info {
+            background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        .brand-info h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .brand-info p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .color-swatch {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin: 0 5px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Anduin Logo Concepts</h1>
+        <p class="subtitle">B2B Infrastructure for Crypto/CFD Settlement, Lending & Issuance</p>
+
+        <div class="brand-info">
+            <h2>Brand Guidelines</h2>
+            <p>
+                <strong>Primary Color:</strong> <span class="color-swatch" style="background: #6366f1;"></span> Indigo (#6366f1)<br>
+                <strong>Target Audience:</strong> Brokers, Exchanges, Fintech Companies<br>
+                <strong>Brand Values:</strong> Trust, Security, Flow, Professional
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Primary Logos (Light Background)</h2>
+            <div class="grid">
+                <div class="logo-card">
+                    <div class="logo-name">Wordmark</div>
+                    <div class="logo-display">
+                        <img src="anduin-wordmark.svg" alt="Anduin Wordmark">
+                    </div>
+                    <p class="description">Clean, modern sans-serif wordmark. Primary text logo for use in headers and print.</p>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-name">Combined Logo</div>
+                    <div class="logo-display">
+                        <img src="anduin-combined.svg" alt="Anduin Combined">
+                    </div>
+                    <p class="description">Shield icon + wordmark. Primary logo for most applications.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Icon Variations</h2>
+            <div class="grid">
+                <div class="logo-card">
+                    <div class="logo-name">Geometric V</div>
+                    <div class="logo-display icon-display">
+                        <img src="anduin-icon-v.svg" alt="Anduin V Icon" style="width: 80px;">
+                    </div>
+                    <p class="description">Sharp, geometric V. Modern and bold. Suitable for app icons.</p>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-name">Shield Icon</div>
+                    <div class="logo-display icon-display">
+                        <img src="anduin-icon-shield.svg" alt="Anduin Shield Icon" style="width: 80px;">
+                    </div>
+                    <p class="description">V inside shield. Represents trust and security. Recommended primary icon.</p>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-name">Flow Icon</div>
+                    <div class="logo-display icon-display">
+                        <img src="anduin-icon-flow.svg" alt="Anduin Flow Icon" style="width: 80px;">
+                    </div>
+                    <p class="description">Abstract flowing lines forming V. Represents settlement flows and movement.</p>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-name">Favicon</div>
+                    <div class="logo-display favicon-display">
+                        <img src="anduin-favicon.svg" alt="Anduin Favicon">
+                    </div>
+                    <p class="description">Simplified 32x32 version. Optimized for browser tabs and bookmarks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Dark Background Version</h2>
+            <div class="grid">
+                <div class="logo-card dark">
+                    <div class="logo-name">Dark Mode Logo</div>
+                    <div class="logo-display">
+                        <img src="anduin-dark.svg" alt="Anduin Dark">
+                    </div>
+                    <p class="description">Light variant for dark backgrounds. Uses indigo-100 tones.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Usage Recommendations</h2>
+            <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <ul style="color: #475569; line-height: 2; list-style-position: inside;">
+                    <li><strong>Website Header:</strong> anduin-combined.svg (light) or anduin-dark.svg (dark mode)</li>
+                    <li><strong>Favicon:</strong> anduin-favicon.svg</li>
+                    <li><strong>Social Media Avatar:</strong> anduin-icon-shield.svg (recommended)</li>
+                    <li><strong>App Icon:</strong> anduin-icon-shield.svg or anduin-icon-v.svg</li>
+                    <li><strong>Email Signatures:</strong> anduin-combined.svg</li>
+                    <li><strong>Print/Documents:</strong> anduin-wordmark.svg or anduin-combined.svg</li>
+                    <li><strong>Loading Animations:</strong> anduin-icon-flow.svg</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

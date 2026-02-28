@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #0f172a; 
+            color: #e2e8f0; 
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .container { max-width: 800px; text-align: center; }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        p { color: #94a3b8; margin-bottom: 48px; font-size: 1.25rem; }
+        .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .project {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            color: #e2e8f0;
+            transition: all 0.2s;
+        }
+        .project:hover { border-color: #6366f1; transform: translateY(-4px); }
+        .project-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .project h2 { margin-bottom: 8px; }
+        .project p { margin-bottom: 0; font-size: 0.95rem; }
+        .project-links { margin-top: 16px; display: flex; gap: 12px; justify-content: center; }
+        .project-links a {
+            padding: 8px 16px;
+            background: #334155;
+            border-radius: 6px;
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        .project-links a:hover { background: #6366f1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Portfolio</h1>
+        <p>Websites and pitch decks for all projects</p>
+        
+        <div class="projects">
+            <div class="project">
+                <div class="project-icon">◆</div>
+                <h2>Anduin</h2>
+                <p>Instant settlement for digital securities</p>
+                <div class="project-links">
+                    <a href="index.html">B2B Site</a>
+                    <a href="index-investor.html">Investor Site</a>
+                    <a href="slides/pitch-deck-b2b.html">B2B Deck</a>
+                    <a href="slides/pitch-deck.html">Investor Deck</a>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-icon">⬡</div>
+                <h2>Outcome Layer</h2>
+                <p>Trust infrastructure for AI agents</p>
+                <div class="project-links">
+                    <a href="../../../outcome-layer/website/index.html">Website</a>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-icon">🛡️</div>
+                <h2>AgentGuard</h2>
+                <p>Security for AI agents with wallets</p>
+                <div class="project-links">
+                    <a href="../../../agent-auth/website/index.html">Website</a>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-icon">◈</div>
+                <h2>Anduin</h2>
+                <p>Complete trust stack for the agent economy</p>
+                <div class="project-links">
+                    <a href="../../../anduin/website/index.html">Website</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
