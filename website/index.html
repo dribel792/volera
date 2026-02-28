@@ -1,497 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anduin | Instant Settlement. Direct From Your Wallet.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anduin | Instant Settlement. Direct From Your Wallet.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="assets/logos/anduin-combined.svg" alt="Anduin" height="36">
-            </a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <i data-lucide="menu"></i>
-            </button>
-            <div class="nav-links">
-                <a href="#problem">Problem</a>
-                <a href="#solution">Solution</a>
-                <a href="#brokers">For Brokers</a>
-                <a href="#investors">For Investors</a>
-                <a href="#contact" class="btn btn-primary">Get Started</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Instant Settlement. Direct From Your Wallet.</h1>
-                <p class="hero-subtitle">
-                    Anduin is the settlement layer that lets investors and brokers interact directly — no prefunding, no counterparty risk, no waiting.
-                </p>
-                <p class="hero-subtext">Settlement • Lending • Issuance</p>
-                <div class="hero-cta">
-                    <a href="#brokers" class="btn btn-primary btn-large">For Brokers</a>
-                    <a href="#investors" class="btn btn-secondary btn-large">For Investors</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-value">T+0</span>
-                        <span class="stat-label">Settlement</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-value">No</span>
-                        <span class="stat-label">Prefunding</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-value">24/7</span>
-                        <span class="stat-label">Markets</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ── Navigation ── -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <span class="logo-text">anduin<span class="logo-dot">.</span></span>
+      </a>
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i data-lucide="menu"></i>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#brokers">Brokers</a>
+        <a href="#investors">Investors</a>
+        <a href="mailto:partners@anduin.io" class="btn btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Problem Section -->
-    <section class="problem-section" id="problem">
-        <div class="container">
-            <h2 class="section-title">Settlement Is Broken</h2>
-            
-            <div class="problems-grid">
-                <div class="problem-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="clock"></i>
-                    </div>
-                    <h3>T+2 Delays</h3>
-                    <p>Trades take days to settle. Capital sits idle.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="lock"></i>
-                    </div>
-                    <h3>Prefunding Required</h3>
-                    <p>You must deposit before you trade. Capital inefficient.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="shield-off"></i>
-                    </div>
-                    <h3>Counterparty Risk</h3>
-                    <p>Your assets sit on someone else's books.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="building-2"></i>
-                    </div>
-                    <h3>Siloed Platforms</h3>
-                    <p>Each broker is an island. No interoperability.</p>
-                </div>
-            </div>
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Settlement Infrastructure · Base L2</div>
+        <h1>Instant Settlement.<br><em>Direct From Your Wallet.</em></h1>
+        <p class="hero-subtitle">
+          Anduin is the on-chain settlement layer that lets brokers and investors interact directly — no prefunding, no counterparty risk, no waiting.
+        </p>
+        <p class="hero-subtext mono">Settlement &nbsp;·&nbsp; Lending &nbsp;·&nbsp; Issuance</p>
+        <div class="hero-cta">
+          <a href="mailto:partners@anduin.io" class="btn btn-primary btn-large">Partner with Us</a>
+          <a href="#solution" class="btn btn-secondary btn-large">See How It Works</a>
         </div>
-    </section>
-
-    <!-- How Anduin Works (Overview) -->
-    <section class="overview-section" id="solution">
-        <div class="container">
-            <h2 class="section-title">One Layer. Three Products.</h2>
-            <p class="section-subtitle">
-                Anduin connects investors and brokers through a unified settlement layer that enables instant settlement, efficient lending, and seamless issuance.
-            </p>
-            
-            <div class="architecture-diagram">
-                <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Investor Wallet -->
-                    <g transform="translate(50, 100)">
-                        <rect width="180" height="80" rx="8" fill="#f8fafc" stroke="#6366f1" stroke-width="2"/>
-                        <text x="90" y="45" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Investor Wallet</text>
-                    </g>
-                    
-                    <!-- Arrow to Anduin -->
-                    <line x1="240" y1="140" x2="290" y2="140" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <line x1="290" y1="140" x2="240" y2="140" stroke="#6366f1" stroke-width="2" marker-start="url(#arrowhead)"/>
-                    
-                    <!-- Anduin Settlement Layer -->
-                    <g transform="translate(300, 80)">
-                        <rect width="200" height="120" rx="8" fill="#6366f1" stroke="#4f46e5" stroke-width="2"/>
-                        <text x="100" y="50" text-anchor="middle" font-size="18" font-weight="700" fill="white">Anduin</text>
-                        <text x="100" y="75" text-anchor="middle" font-size="16" font-weight="600" fill="white">Settlement Layer</text>
-                    </g>
-                    
-                    <!-- Arrow to Broker -->
-                    <line x1="510" y1="140" x2="560" y2="140" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <line x1="560" y1="140" x2="510" y2="140" stroke="#6366f1" stroke-width="2" marker-start="url(#arrowhead)"/>
-                    
-                    <!-- Broker/Exchange -->
-                    <g transform="translate(570, 100)">
-                        <rect width="180" height="80" rx="8" fill="#f8fafc" stroke="#6366f1" stroke-width="2"/>
-                        <text x="90" y="45" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Broker/Exchange</text>
-                    </g>
-                    
-                    <!-- Vertical line from Anduin -->
-                    <line x1="400" y1="210" x2="400" y2="260" stroke="#6366f1" stroke-width="2"/>
-                    
-                    <!-- Three Products -->
-                    <g transform="translate(100, 270)">
-                        <rect width="150" height="70" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
-                        <text x="75" y="30" text-anchor="middle" font-size="14" font-weight="600" fill="#4f46e5">Settlement</text>
-                        <text x="75" y="50" text-anchor="middle" font-size="11" fill="#64748b">Instant T+0</text>
-                    </g>
-                    
-                    <g transform="translate(325, 270)">
-                        <rect width="150" height="70" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
-                        <text x="75" y="30" text-anchor="middle" font-size="14" font-weight="600" fill="#4f46e5">Lending</text>
-                        <text x="75" y="50" text-anchor="middle" font-size="11" fill="#64748b">10x Margin</text>
-                    </g>
-                    
-                    <g transform="translate(550, 270)">
-                        <rect width="150" height="70" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
-                        <text x="75" y="30" text-anchor="middle" font-size="14" font-weight="600" fill="#4f46e5">Issuance</text>
-                        <text x="75" y="50" text-anchor="middle" font-size="11" fill="#64748b">Token Products</text>
-                    </g>
-                    
-                    <!-- Arrows to products -->
-                    <line x1="400" y1="260" x2="175" y2="270" stroke="#6366f1" stroke-width="1.5"/>
-                    <line x1="400" y1="260" x2="400" y2="270" stroke="#6366f1" stroke-width="1.5"/>
-                    <line x1="400" y1="260" x2="625" y2="270" stroke="#6366f1" stroke-width="1.5"/>
-                    
-                    <!-- Arrow definitions -->
-                    <defs>
-                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                            <polygon points="0 0, 10 3, 0 6" fill="#6366f1"/>
-                        </marker>
-                    </defs>
-                </svg>
-            </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">T+0</span>
+            <span class="stat-label">Settlement</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">No</span>
+            <span class="stat-label">Prefunding</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">Markets</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">Base</span>
+            <span class="stat-label">L2 Chain</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- For Brokers & Exchanges -->
-    <section class="brokers-section" id="brokers">
-        <div class="container">
-            <h2 class="section-title">For Brokers & Exchanges</h2>
-            <p class="section-subtitle">Access new markets. Unlock capital. Grow volume.</p>
-            
-            <div class="value-props-grid">
-                <div class="value-prop-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="users"></i>
-                    </div>
-                    <h3>Reach DeFi Users</h3>
-                    <p>60M+ on-chain traders who won't move to CEX. Now they can trade on your platform from their own wallets.</p>
-                </div>
-                
-                <div class="value-prop-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="trending-up"></i>
-                    </div>
-                    <h3>5x Capital Efficiency</h3>
-                    <p>Cross-broker netting reduces margin requirements. Free up capital locked in reserves.</p>
-                </div>
-                
-                <div class="value-prop-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="bar-chart-3"></i>
-                    </div>
-                    <h3>Higher Trading Volume</h3>
-                    <p>Lower barriers = more traders = more volume. Instant settlement means faster turnover.</p>
-                </div>
-                
-                <div class="value-prop-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="shield"></i>
-                    </div>
-                    <h3>No Balance Sheet Risk</h3>
-                    <p>Lending, settlement, counterparty risk — all externalized to Anduin's on-chain infrastructure.</p>
-                </div>
-            </div>
-            
-            <div class="products-row">
-                <h3 class="subsection-title">Three Ways to Grow</h3>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="icon-wrapper">
-                            <i data-lucide="zap"></i>
-                        </div>
-                        <h4>Settlement</h4>
-                        <p>Offer self-custody trading. Users trade from wallets, settle instantly.</p>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="icon-wrapper">
-                            <i data-lucide="wallet"></i>
-                        </div>
-                        <h4>Lending</h4>
-                        <p>Offer 10x margin without MIFID complexity. In-app loans externalize risk.</p>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="icon-wrapper">
-                            <i data-lucide="layers"></i>
-                        </div>
-                        <h4>Issuance</h4>
-                        <p>Tokenize products for on-chain distribution. Reach wallet users.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- ── Problem ── -->
+  <section class="problem-section" id="problem">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title">Settlement Is Broken</h2>
+      </div>
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-number mono">01</div>
+          <h3>T+2 Delays</h3>
+          <p>Trades take days to settle. Capital sits idle while markets move.</p>
         </div>
-    </section>
-
-    <!-- For Investors -->
-    <section class="investors-section" id="investors">
-        <div class="container">
-            <h2 class="section-title">For Investors</h2>
-            <p class="section-subtitle">Trade directly. Stay in control.</p>
-            
-            <div class="investor-benefits-grid">
-                <div class="benefit-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="unlock"></i>
-                    </div>
-                    <h3>Your Keys, Your Assets</h3>
-                    <p>Trade directly from your wallet. No deposits, no custody risk.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="zap"></i>
-                    </div>
-                    <h3>Instant Settlement</h3>
-                    <p>Trades settle in seconds, not days. Your capital is never locked.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="wallet"></i>
-                    </div>
-                    <h3>No Prefunding</h3>
-                    <p>Margin vault handles collateral efficiently. No need to pre-deposit.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="icon-wrapper large">
-                        <i data-lucide="globe"></i>
-                    </div>
-                    <h3>Access Any Broker</h3>
-                    <p>One wallet, multiple brokers. Choose the best prices across platforms.</p>
-                </div>
-            </div>
+        <div class="problem-card">
+          <div class="problem-number mono">02</div>
+          <h3>Prefunding Required</h3>
+          <p>You must deposit before you trade. Capital locked, efficiency destroyed.</p>
         </div>
-    </section>
-
-    <!-- Technical Flow -->
-    <section class="technical-section">
-        <div class="container">
-            <h2 class="section-title">Under the Hood</h2>
-            
-            <div class="technical-diagram">
-                <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Investor Wallet -->
-                    <g transform="translate(200, 20)">
-                        <rect width="200" height="60" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
-                        <text x="100" y="38" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Investor Wallet</text>
-                    </g>
-                    
-                    <!-- Arrow + Label -->
-                    <line x1="300" y1="90" x2="300" y2="130" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-                    <text x="320" y="115" font-size="12" fill="#64748b">deposit collateral</text>
-                    
-                    <!-- Margin Vault + Oracle -->
-                    <g transform="translate(150, 140)">
-                        <rect width="200" height="60" rx="8" fill="#6366f1" stroke="#4f46e5" stroke-width="2"/>
-                        <text x="100" y="38" text-anchor="middle" font-size="16" font-weight="600" fill="white">Margin Vault</text>
-                    </g>
-                    
-                    <g transform="translate(380, 140)">
-                        <rect width="180" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-                        <text x="90" y="38" text-anchor="middle" font-size="14" font-weight="500" fill="#64748b">Oracle Price Feeds</text>
-                    </g>
-                    
-                    <!-- Connection between vault and oracle -->
-                    <line x1="360" y1="170" x2="370" y2="170" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrow)"/>
-                    <line x1="370" y1="170" x2="360" y2="170" stroke="#6366f1" stroke-width="1.5" marker-start="url(#arrow)"/>
-                    
-                    <!-- Arrow + Label -->
-                    <line x1="300" y1="210" x2="300" y2="250" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-                    <text x="320" y="235" font-size="12" fill="#64748b">trade</text>
-                    
-                    <!-- Broker/Exchange -->
-                    <g transform="translate(200, 260)">
-                        <rect width="200" height="60" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
-                        <text x="100" y="38" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Broker/Exchange</text>
-                    </g>
-                    
-                    <!-- Arrow + Label -->
-                    <line x1="300" y1="330" x2="300" y2="370" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-                    <text x="320" y="355" font-size="12" fill="#64748b">PnL calculated</text>
-                    
-                    <!-- Settlement Engine -->
-                    <g transform="translate(150, 380)">
-                        <rect width="300" height="60" rx="8" fill="#6366f1" stroke="#4f46e5" stroke-width="2"/>
-                        <text x="150" y="38" text-anchor="middle" font-size="16" font-weight="600" fill="white">Settlement Engine</text>
-                    </g>
-                    
-                    <!-- Arrow + Label -->
-                    <line x1="300" y1="450" x2="300" y2="490" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-                    <text x="320" y="475" font-size="12" fill="#64748b">instant on-chain</text>
-                    
-                    <!-- Final Margin Vault -->
-                    <g transform="translate(150, 500)">
-                        <rect width="300" height="80" rx="8" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
-                        <text x="150" y="35" text-anchor="middle" font-size="16" font-weight="600" fill="white">Margin Vault</text>
-                        <text x="150" y="60" text-anchor="middle" font-size="13" fill="white">Credit/Debit Both Sides</text>
-                    </g>
-                    
-                    <!-- Arrow definition -->
-                    <defs>
-                        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                            <polygon points="0 0, 10 3, 0 6" fill="#6366f1"/>
-                        </marker>
-                    </defs>
-                </svg>
-            </div>
-            
-            <div class="technical-features">
-                <div class="tech-feature">
-                    <i data-lucide="check-circle"></i>
-                    <span>Atomic settlement</span>
-                </div>
-                <div class="tech-feature">
-                    <i data-lucide="shield"></i>
-                    <span>Insurance fund</span>
-                </div>
-                <div class="tech-feature">
-                    <i data-lucide="arrow-right-left"></i>
-                    <span>Cross-broker netting</span>
-                </div>
-            </div>
+        <div class="problem-card">
+          <div class="problem-number mono">03</div>
+          <h3>Counterparty Risk</h3>
+          <p>Your assets sit on someone else's books. That's a liability, not a feature.</p>
         </div>
-    </section>
-
-    <!-- Tech Stack -->
-    <section class="tech-stack-section">
-        <div class="container">
-            <h2 class="section-title">Built on Proven Infrastructure</h2>
-            
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="layers"></i>
-                    </div>
-                    <h4>Base L2</h4>
-                    <p>Coinbase's Layer 2 for low fees and high throughput</p>
-                </div>
-                
-                <div class="tech-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="wallet"></i>
-                    </div>
-                    <h4>USDC</h4>
-                    <p>Circle-backed stablecoin for settlement</p>
-                </div>
-                
-                <div class="tech-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="activity"></i>
-                    </div>
-                    <h4>Chainlink Oracles</h4>
-                    <p>Enterprise-grade price feeds</p>
-                </div>
-                
-                <div class="tech-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="file-text"></i>
-                    </div>
-                    <h4>ERC-3643</h4>
-                    <p>Compliant tokenization standard</p>
-                </div>
-            </div>
+        <div class="problem-card">
+          <div class="problem-number mono">04</div>
+          <h3>Siloed Platforms</h3>
+          <p>Every broker is an island. No interoperability, no netting, no efficiency.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Get Started?</h2>
-                <p>Join the future of instant settlement</p>
-                <div class="cta-buttons">
-                    <a href="mailto:partners@anduin.io" class="btn btn-primary btn-large">
-                        <i data-lucide="building-2"></i>
-                        <span>I'm a Broker</span>
-                    </a>
-                    <a href="#waitlist" class="btn btn-secondary btn-large">
-                        <i data-lucide="user"></i>
-                        <span>I'm an Investor</span>
-                    </a>
-                </div>
-            </div>
+  <!-- ── Solution / Architecture ── -->
+  <section class="overview-section" id="solution">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <span class="section-label">The Solution</span>
+        <h2 class="section-title">One Layer. Three Products.</h2>
+        <p class="section-subtitle">
+          Anduin connects investors and brokers through a unified on-chain settlement layer — enabling instant settlement, efficient lending, and seamless issuance.
+        </p>
+      </div>
+
+      <div class="architecture-diagram">
+        <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono', monospace">
+
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#6366F1" opacity="0.7"/>
+            </marker>
+            <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#6366F1"/>
+              <stop offset="100%" stop-color="#22D3EE"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Investor Wallet -->
+          <rect x="30" y="80" width="160" height="64" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+          <text x="110" y="106" text-anchor="middle" font-size="11" fill="#94A3B8" letter-spacing="0.06em" text-transform="uppercase">INVESTOR</text>
+          <text x="110" y="126" text-anchor="middle" font-size="12" font-weight="600" fill="#E2E8F0">Wallet</text>
+
+          <!-- Arrows to Anduin -->
+          <line x1="198" y1="112" x2="270" y2="112" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.6"/>
+          <line x1="270" y1="132" x2="198" y2="132" stroke="#22D3EE" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.5"/>
+
+          <!-- Anduin Core -->
+          <rect x="280" y="60" width="200" height="104" rx="12" fill="url(#accentGrad)" opacity="0.15" stroke="url(#accentGrad)" stroke-width="1.5"/>
+          <text x="380" y="96" text-anchor="middle" font-size="13" fill="#A5B4FC" letter-spacing="0.08em">ANDUIN</text>
+          <text x="380" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="-0.02em">Settlement Layer</text>
+          <text x="380" y="148" text-anchor="middle" font-size="10" fill="#94A3B8" letter-spacing="0.04em">Base L2 · USDC</text>
+
+          <!-- Arrows to Broker -->
+          <line x1="490" y1="112" x2="558" y2="112" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.6"/>
+          <line x1="558" y1="132" x2="490" y2="132" stroke="#22D3EE" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.5"/>
+
+          <!-- Broker/Exchange -->
+          <rect x="568" y="80" width="162" height="64" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+          <text x="649" y="106" text-anchor="middle" font-size="11" fill="#94A3B8" letter-spacing="0.06em">BROKER /</text>
+          <text x="649" y="126" text-anchor="middle" font-size="12" font-weight="600" fill="#E2E8F0">Exchange</text>
+
+          <!-- Vertical line down -->
+          <line x1="380" y1="174" x2="380" y2="218" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+
+          <!-- Three product cards -->
+          <rect x="60" y="228" width="170" height="80" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.22)" stroke-width="1.5"/>
+          <text x="145" y="258" text-anchor="middle" font-size="10" fill="#818CF8" letter-spacing="0.08em">SETTLEMENT</text>
+          <text x="145" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Instant T+0</text>
+          <text x="145" y="298" text-anchor="middle" font-size="10" fill="#64748B">on-chain atomic swap</text>
+
+          <rect x="295" y="228" width="170" height="80" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.22)" stroke-width="1.5"/>
+          <text x="380" y="258" text-anchor="middle" font-size="10" fill="#818CF8" letter-spacing="0.08em">LENDING</text>
+          <text x="380" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Up to 10× Margin</text>
+          <text x="380" y="298" text-anchor="middle" font-size="10" fill="#64748B">no MIFID complexity</text>
+
+          <rect x="530" y="228" width="170" height="80" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.22)" stroke-width="1.5"/>
+          <text x="615" y="258" text-anchor="middle" font-size="10" fill="#818CF8" letter-spacing="0.08em">ISSUANCE</text>
+          <text x="615" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Token Products</text>
+          <text x="615" y="298" text-anchor="middle" font-size="10" fill="#64748B">ERC-3643 compliant</text>
+
+          <!-- Lines to products -->
+          <line x1="380" y1="218" x2="145" y2="228" stroke="rgba(255,255,255,0.06)" stroke-width="1.2"/>
+          <line x1="380" y1="218" x2="380" y2="228" stroke="rgba(255,255,255,0.06)" stroke-width="1.2"/>
+          <line x1="380" y1="218" x2="615" y2="228" stroke="rgba(255,255,255,0.06)" stroke-width="1.2"/>
+
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── For Brokers ── -->
+  <section class="brokers-section" id="brokers">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <span class="section-label">For Brokers & Exchanges</span>
+        <h2 class="section-title">Access New Markets.<br>Unlock Capital.</h2>
+        <p class="section-subtitle">
+          Integrate once. Offer self-custody trading, efficient lending, and tokenized products to a whole new user base.
+        </p>
+      </div>
+
+      <div class="value-props-grid">
+        <div class="value-prop-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <h3>Reach 60M+ DeFi Traders</h3>
+          <p>On-chain users who won't move to CEX can now trade on your platform directly from their own wallets — no new accounts, no KYC friction.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="assets/logos/anduin-combined.svg" alt="Anduin" height="32">
-                    <p>Instant settlement infrastructure for modern finance.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-col">
-                        <h4>Products</h4>
-                        <a href="#settlement">Settlement</a>
-                        <a href="#lending">Lending</a>
-                        <a href="#issuance">Issuance</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Solutions</h4>
-                        <a href="#brokers">For Brokers</a>
-                        <a href="#investors">For Investors</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <a href="#about">About</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Anduin. All rights reserved.</p>
-            </div>
+        <div class="value-prop-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+          <h3>5× Capital Efficiency</h3>
+          <p>Cross-broker netting reduces margin requirements. Free capital locked in reserves. More trades, less collateral.</p>
         </div>
-    </footer>
+        <div class="value-prop-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <h3>No Balance Sheet Risk</h3>
+          <p>Settlement, lending, and counterparty exposure — all handled on-chain. Your book stays clean.</p>
+        </div>
+        <div class="value-prop-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <h3>Higher Volume, Faster</h3>
+          <p>Lower barriers mean more traders. Instant settlement means faster turnover. Both compound your revenue.</p>
+        </div>
+      </div>
 
-    <script src="js/main.js"></script>
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-        
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileMenuToggle.classList.toggle('active');
-            });
-        }
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-            });
-        });
-    </script>
+      <div class="products-row">
+        <h3>Three Ways to Grow</h3>
+        <div class="products-grid">
+          <div class="product-card">
+            <span class="tag">01 / Settlement</span>
+            <h4>Self-Custody Trading</h4>
+            <p>Users trade from their wallets, settle instantly on-chain. You capture the flow without the custody risk.</p>
+          </div>
+          <div class="product-card">
+            <span class="tag">02 / Lending</span>
+            <h4>10× Margin — Simplified</h4>
+            <p>Offer leveraged trading without MIFID complexity. In-app loans, externalized risk, instant settlement.</p>
+          </div>
+          <div class="product-card">
+            <span class="tag">03 / Issuance</span>
+            <h4>Tokenize Your Products</h4>
+            <p>Wrap your instruments as ERC-3643 tokens. Distribute on-chain, reach wallet-native users globally.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── For Investors ── -->
+  <section class="investors-section" id="investors">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <span class="section-label">For Investors</span>
+        <h2 class="section-title">Trade Directly.<br>Stay in Control.</h2>
+        <p class="section-subtitle">
+          Your keys, your assets, your trades — settled in seconds, not days.
+        </p>
+      </div>
+
+      <div class="investor-benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3>Your Keys, Your Assets</h3>
+          <p>Trade directly from your wallet. No deposits. No custody risk.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3>Instant Settlement</h3>
+          <p>Trades settle in seconds on-chain. Your capital is never locked waiting.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 12V22H4V12"/>
+              <path d="M22 7H2v5h20V7z"/>
+              <path d="M12 22V7"/>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+          </div>
+          <h3>No Prefunding</h3>
+          <p>Margin vault handles collateral efficiently. Trade on margin without pre-depositing.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>Access Any Broker</h3>
+          <p>One wallet, multiple brokers. Best prices across platforms from a single account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Under the Hood ── -->
+  <section class="technical-section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <span class="section-label">Architecture</span>
+        <h2 class="section-title">Under the Hood</h2>
+      </div>
+
+      <div class="technical-diagram">
+        <svg viewBox="0 0 460 580" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono', monospace">
+          <defs>
+            <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#6366F1" opacity="0.7"/>
+            </marker>
+            <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#6366F1"/>
+              <stop offset="100%" stop-color="#22D3EE"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Step 1: Investor Wallet -->
+          <rect x="130" y="20" width="200" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+          <text x="230" y="44" text-anchor="middle" font-size="10" fill="#64748B" letter-spacing="0.08em">INVESTOR</text>
+          <text x="230" y="64" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Wallet</text>
+
+          <!-- Arrow + label -->
+          <line x1="230" y1="80" x2="230" y2="118" stroke="#6366F1" stroke-width="1.5" marker-end="url(#arr2)" opacity="0.6"/>
+          <text x="244" y="104" font-size="9" fill="#475569" letter-spacing="0.04em">deposit collateral</text>
+
+          <!-- Step 2: Margin Vault -->
+          <rect x="80" y="128" width="200" height="56" rx="10" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.3)" stroke-width="1.5"/>
+          <text x="180" y="150" text-anchor="middle" font-size="10" fill="#818CF8" letter-spacing="0.08em">CONTRACT</text>
+          <text x="180" y="170" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Margin Vault</text>
+
+          <!-- Oracle -->
+          <rect x="308" y="128" width="130" height="56" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.07)" stroke-width="1.2"/>
+          <text x="373" y="150" text-anchor="middle" font-size="9" fill="#475569" letter-spacing="0.06em">ORACLE</text>
+          <text x="373" y="170" text-anchor="middle" font-size="11" fill="#94A3B8">Price Feeds</text>
+          <line x1="290" y1="156" x2="300" y2="156" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <line x1="308" y1="156" x2="298" y2="156" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+          <!-- Arrow -->
+          <line x1="180" y1="188" x2="230" y2="228" stroke="#6366F1" stroke-width="1.5" marker-end="url(#arr2)" opacity="0.6"/>
+          <text x="154" y="218" font-size="9" fill="#475569" letter-spacing="0.04em">trade signal</text>
+
+          <!-- Step 3: Broker -->
+          <rect x="130" y="238" width="200" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+          <text x="230" y="260" text-anchor="middle" font-size="10" fill="#64748B" letter-spacing="0.08em">BROKER / EXCHANGE</text>
+          <text x="230" y="280" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Order Execution</text>
+
+          <!-- Arrow -->
+          <line x1="230" y1="298" x2="230" y2="338" stroke="#6366F1" stroke-width="1.5" marker-end="url(#arr2)" opacity="0.6"/>
+          <text x="244" y="324" font-size="9" fill="#475569" letter-spacing="0.04em">PnL calculated</text>
+
+          <!-- Step 4: Settlement Engine -->
+          <rect x="80" y="348" width="300" height="56" rx="10" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.3)" stroke-width="1.5"/>
+          <text x="230" y="370" text-anchor="middle" font-size="10" fill="#818CF8" letter-spacing="0.08em">CONTRACT</text>
+          <text x="230" y="390" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Settlement Engine</text>
+
+          <!-- Arrow -->
+          <line x1="230" y1="408" x2="230" y2="448" stroke="url(#g2)" stroke-width="1.5" marker-end="url(#arr2)" opacity="0.8"/>
+          <text x="244" y="434" font-size="9" fill="#475569" letter-spacing="0.04em">atomic on-chain</text>
+
+          <!-- Step 5: Margin Vault (credit/debit) -->
+          <rect x="80" y="458" width="300" height="70" rx="10" fill="rgba(74,222,128,0.08)" stroke="rgba(74,222,128,0.25)" stroke-width="1.5"/>
+          <text x="230" y="482" text-anchor="middle" font-size="10" fill="#4ADE80" letter-spacing="0.08em">SETTLEMENT COMPLETE</text>
+          <text x="230" y="502" text-anchor="middle" font-size="13" font-weight="600" fill="#E2E8F0">Margin Vault Updated</text>
+          <text x="230" y="520" text-anchor="middle" font-size="10" fill="#64748B">credit &amp; debit both sides · instant</text>
+        </svg>
+      </div>
+
+      <div class="technical-features">
+        <div class="tech-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Atomic settlement</span>
+        </div>
+        <div class="tech-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Insurance fund</span>
+        </div>
+        <div class="tech-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Cross-broker netting</span>
+        </div>
+        <div class="tech-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>81 tests passing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tech Stack ── -->
+  <section class="tech-stack-section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <span class="section-label">Infrastructure</span>
+        <h2 class="section-title">Built on Proven Rails</h2>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <span class="tech-logo">01 / Chain</span>
+          <h4>Base L2</h4>
+          <p>Coinbase's Ethereum L2 — low fees, high throughput, institutional-grade reliability.</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-logo">02 / Currency</span>
+          <h4>USDC</h4>
+          <p>Circle-backed stablecoin. The settlement currency of the on-chain finance stack.</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-logo">03 / Pricing</span>
+          <h4>Chainlink Oracles</h4>
+          <p>Enterprise-grade price feeds powering margin and settlement calculations on-chain.</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-logo">04 / Standard</span>
+          <h4>ERC-3643</h4>
+          <p>Compliant tokenization standard for regulated, identity-gated securities issuance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-content">
+        <span class="section-label">Ready?</span>
+        <h2>The Future of Settlement<br>Starts Here.</h2>
+        <p>Talk to us about integrating Anduin into your exchange or brokerage infrastructure.</p>
+        <div class="cta-buttons">
+          <a href="mailto:partners@anduin.io" class="btn btn-primary btn-large">I'm a Broker</a>
+          <a href="#" class="btn btn-secondary btn-large">I'm an Investor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-text" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-0.04em;">anduin<span style="color:#6366F1">.</span></span>
+          <p>Instant settlement infrastructure for modern finance. Built on Base L2, settled in USDC.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Products</h4>
+            <a href="#solution">Settlement</a>
+            <a href="#solution">Lending</a>
+            <a href="#solution">Issuance</a>
+          </div>
+          <div class="footer-col">
+            <h4>Solutions</h4>
+            <a href="#brokers">For Brokers</a>
+            <a href="#investors">For Investors</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="mailto:partners@anduin.io">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Anduin. All rights reserved.</p>
+        <span class="mono" style="font-size:0.72rem;color:#334155;">Base L2 · USDC · ERC-3643</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navLinks');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    }
+
+    // Navbar scroll opacity
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        navbar.style.background = 'rgba(5,5,15,0.95)';
+      } else {
+        navbar.style.background = 'rgba(5,5,15,0.7)';
+      }
+    });
+  </script>
 </body>
 </html>
